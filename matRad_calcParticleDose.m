@@ -169,7 +169,11 @@ for i = 1:length(stf) % loop over all beams
                                                      maxLateralCutoffDoseCalc);
              
             radDepths = radDepthVdoseGrid{1}(ix);   
-                       
+            %% lundmodulation implementation
+            if isfield(pln.propOpt, 'lungModulation') && pln.propOpt.lungModulation
+                modulationDepth = modulationDepthVdoseGrid{1}(ix);
+            end           
+            %%
             % just use tissue classes of voxels found by ray tracer
             if (isequal(pln.propOpt.bioOptimization,'LEMIV_effect') || isequal(pln.propOpt.bioOptimization,'LEMIV_RBExD')) ... 
                 && strcmp(pln.radiationMode,'carbon')
@@ -233,7 +237,13 @@ for i = 1:length(stf) % loop over all beams
                 
                 % adjust radDepth according to range shifter
                 currRadDepths = radDepths(currIx) + stf(i).ray(j).rangeShifter(k).eqThickness;
-
+                
+                %% lundmodulation implementation
+                if isfield(pln.propOpt, 'lungModulation') && pln.propOpt.lungModulation
+                    currmodulationDepth = modulationDepth(currIx); 
+                end
+                %%
+                
                 % calculate initial focus sigma
                 sigmaIni = matRad_interp1(machine.data(energyIx).initFocus.dist (stf(i).ray(j).focusIx(k),:)', ...
                                              machine.data(energyIx).initFocus.sigma(stf(i).ray(j).focusIx(k),:)',stf(i).ray(j).SSD);
@@ -251,13 +261,24 @@ for i = 1:length(stf) % loop over all beams
                     sigmaIni_sq = sigmaIni_sq +  sigmaRashi^2;
                     
                 end
-                                
+                %% lundmodulation implementation
                 % calculate particle dose for bixel k on ray j of beam i
-                bixelDose = matRad_calcParticleDoseBixel(...
-                    currRadDepths, ...
-                    radialDist_sq(currIx), ...
-                    sigmaIni_sq, ...
-                    machine.data(energyIx));                 
+                if isfield(pln.propOpt, 'lungModulation') && pln.propOpt.lungModulation
+                    bixelDose = matRad_calcParticleDoseBixel(...
+                        currRadDepths, ...
+                        radialDist_sq(currIx), ...
+                        sigmaIni_sq, ...
+                        machine.data(energyIx),...
+                        pln.propOpt.lungModulation,...     
+                        currmodulationDepth);
+                else
+                    bixelDose = matRad_calcParticleDoseBixel(...
+                        currRadDepths, ...
+                        radialDist_sq(currIx), ...
+                        sigmaIni_sq, ...
+                        machine.data(energyIx));
+                end
+                %%          
   
                 % dij sampling is exluded for particles until we investigated the influence of voxel sampling for particles
                 %relDoseThreshold   =  0.02;   % sample dose values beyond the relative dose

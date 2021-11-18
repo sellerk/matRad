@@ -275,7 +275,9 @@ for i = 1:length(BeamSeqNames)
             energyTemp = stf(i).ray(j).energy(k);
             focusFWHM = stf(i).ray(j).focusFWHM(k);
             energyIxTemp = find([machine.data.energy] == energyTemp);
-            focusIxTemp = find(abs([machine.data(energyIxTemp).initFocus.SisFWHMAtIso] - focusFWHM )< 10^-3);
+            % hier gab es ein Problem mit der Rundung deswegen Abfrage auf
+            % kleiner 10 e-2 gesetzt
+            focusIxTemp = find(abs([machine.data(energyIxTemp).initFocus.SisFWHMAtIso] - focusFWHM )< 10^-2);
             stf(i).ray(j).focusIx(k) = focusIxTemp;
             stf(i).ray(j).focusFWHM(k) = machine.data(energyIxTemp).initFocus.SisFWHMAtIso(stf(i).ray(j).focusIx(k));
         end

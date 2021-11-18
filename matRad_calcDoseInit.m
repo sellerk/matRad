@@ -146,3 +146,25 @@ end
 
 % compute SSDs
 stf = matRad_computeSSD(stf,ct);
+
+%% lundmodulation implementation
+%  create a variable analogue to "ct" for "lung" to hand to raytracer
+if isfield(pln.propOpt, 'lungModulation') && pln.propOpt.lungModulation
+    % modulation cube with properties of ct
+    % this is a test comment 
+    modulation.resolution = ct.resolution;
+    modulation.cubeDim = ct.cubeDim;
+    modulation.numOfCtScen = ct.numOfCtScen;
+    modulation.cube = {zeros(ct.cubeDim)};
+    modulation.x = ct.x;
+    modulation.y = ct.y;
+    modulation.z = ct.z;
+    modulation.hlut = ct.hlut;
+    % set additional filter for modulating material atm its just "lung"
+    for innerloop = 1:size(cst,1)
+            if strcmpi(cst{innerloop,2}, 'lung')
+                modulation.cube{1}(cst{innerloop,4}{1}) = ct.cube{1}(cst{innerloop,4}{1});
+            end
+    end 
+end
+

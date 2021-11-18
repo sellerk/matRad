@@ -62,7 +62,24 @@ x = doseInfo.ImagePositionPatient(1) + doseInfo.ImageOrientationPatient(1) * ...
                                        doseInfo.PixelSpacing(1) * double([0:doseInfo.Columns - 1]);
 y = doseInfo.ImagePositionPatient(2) + doseInfo.ImageOrientationPatient(5) * ...
                                        doseInfo.PixelSpacing(2) * double([0:doseInfo.Rows - 1]);
+%% added MaW 20210914
+% uncomment
 z = [doseInfo.ImagePositionPatient(3) + doseInfo.GridFrameOffsetVector];
+
+% comment below
+% take offset in syngoRT Vx mode into account
+% try
+%     if isfield(doseInfo, 'ManufacturerModelName')
+%         if strcmp(doseInfo.ManufacturerModelName, 'syngo RT Create Verification Plan')
+%              z = [doseInfo.ImagePositionPatient(3) + doseInfo.GridFrameOffsetVector]-10;
+%         else
+%              z = [doseInfo.ImagePositionPatient(3) + doseInfo.GridFrameOffsetVector];
+%         end
+%     end
+% catch
+%     z = [doseInfo.ImagePositionPatient(3) + doseInfo.GridFrameOffsetVector];
+% end
+%% 
 
 % set up grid matrices - implicit dimension permuation (X Y Z-> Y X Z)
 % Matlab represents internally in the first matrix dimension the

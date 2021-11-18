@@ -1302,7 +1302,7 @@ if get(handles.popupTypeOfPlot,'Value') == 2 && exist('Result','var')
         PlotHandles{Cnt,1} = ...
         plot([WEPL_Target_Entry WEPL_Target_Entry],get(handles.axesFig,'YLim'),'--','Linewidth',3,'color','k');hold on
         plot([WEPL_Target_Exit WEPL_Target_Exit],get(handles.axesFig,'YLim'),'--','Linewidth',3,'color','k');hold on
-      
+        
     else
         PlotHandles{Cnt,1} =[];
     end
@@ -1313,7 +1313,7 @@ if get(handles.popupTypeOfPlot,'Value') == 2 && exist('Result','var')
    set(h,'FontSize',defaultFontSize);
    xlabel('radiological depth [mm]','FontSize',8);  
    grid on, grid minor
-   
+
 end
 
 zoom(handles.figure1,'reset');
@@ -2378,6 +2378,7 @@ catch
     handles = reloadGUI(hObject, handles);
 end
 
+assignin('base', 'handles', handles)
 guidata(hObject, handles);
 
 

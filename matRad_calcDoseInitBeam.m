@@ -46,6 +46,18 @@ matRad_cfg.dispInfo('matRad: calculate radiological depth cube... ');
 radDepthVctGrid = matRad_rayTracing(stf(i),ct,VctGrid,rot_coordsV,effectiveLateralCutoff);
 matRad_cfg.dispInfo('done.\n');
 
+%% lungmodulation implementation
+% calculate raytracing for all voxels inside lung
+if isfield(pln.propOpt, 'lungModulation') && pln.propOpt.lungModulation
+    fprintf('matRad: calculate depth cube for lungMod...');
+    modulationDepthVctGrid = matRad_rayTracing(stf(i),modulation,VctGrid,rot_coordsV,effectiveLateralCutoff);
+    fprintf('done.\n');
+    % interpolate modulation depth cube to dose grid resolution
+    modulationDepthVdoseGrid = matRad_interpRadDepth...
+    (modulation,1,VctGrid,VdoseGrid,dij.doseGrid.x,dij.doseGrid.y,dij.doseGrid.z,modulationDepthVctGrid);
+end
+%%
+
 % interpolate radiological depth cube to dose grid resolution
 radDepthVdoseGrid = matRad_interpRadDepth...
     (ct,1,VctGrid,VdoseGrid,dij.doseGrid.x,dij.doseGrid.y,dij.doseGrid.z,radDepthVctGrid);

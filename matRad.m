@@ -18,29 +18,34 @@ matRad_rc
 % load patient data, i.e. ct, voi, cst
 
 %load HEAD_AND_NECK
-load TG119.mat
+% load TG119.mat
 %load PROSTATE.mat
 %load LIVER.mat
 %load BOXPHANTOM.mat
+load C:\Users\root\OneDrive\_MIT\06_TPS\Cubes\20210830_p_115_vT_loaded_wOffset.mat
+cst{3,3} = 'TARGET';
 
 % meta information for treatment plan
 
-pln.radiationMode   = 'photons';     % either photons / protons / carbon
-pln.machine         = 'Generic';
+% pln.radiationMode   = 'photons';     % either photons / protons / carbon
+pln.radiationMode   = 'protons';     % either photons / protons / carbon
+% pln.machine         = 'Generic';
+pln.machine         = 'MIT_P_doubleGauss';
 
-pln.numOfFractions  = 30;
+pln.numOfFractions  = 1;
 
 % beam geometry settings
-pln.propStf.bixelWidth      = 5; % [mm] / also corresponds to lateral spot spacing for particles
-pln.propStf.gantryAngles    = [0:72:359]; % [?]
-pln.propStf.couchAngles     = [0 0 0 0 0]; % [?]
+pln.propStf.bixelWidth      = 2; % [mm] / also corresponds to lateral spot spacing for particles
+pln.propStf.gantryAngles    = [90]; % [?]
+pln.propStf.couchAngles     = [0]; % [?]
 pln.propStf.numOfBeams      = numel(pln.propStf.gantryAngles);
-pln.propStf.isoCenter       = ones(pln.propStf.numOfBeams,1) * matRad_getIsoCenter(cst,ct,0);
+% pln.propStf.isoCenter       = ones(pln.propStf.numOfBeams,1) * matRad_getIsoCenter(cst,ct,0);
+pln.propStf.isoCenter       = [510 238.5 164];
 
 % dose calculation settings
-pln.propDoseCalc.doseGrid.resolution.x = 5; % [mm]
-pln.propDoseCalc.doseGrid.resolution.y = 5; % [mm]
-pln.propDoseCalc.doseGrid.resolution.z = 5; % [mm]
+pln.propDoseCalc.doseGrid.resolution.x = 2; % [mm]
+pln.propDoseCalc.doseGrid.resolution.y = 2; % [mm]
+pln.propDoseCalc.doseGrid.resolution.z = 2; % [mm]
 
 % optimization settings
 pln.propOpt.optimizer       = 'IPOPT';

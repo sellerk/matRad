@@ -1,4 +1,4 @@
-function dose = matRad_calcParticleDoseBixel(radDepths, radialDist_sq, sigmaIni_sq, baseData)
+function dose = matRad_calcParticleDoseBixel(radDepths, radialDist_sq, sigmaIni_sq, baseData, lungModulation, currmodulationDepth)
 % matRad visualization of two-dimensional dose distributions 
 % on ct including segmentation
 % 
@@ -6,11 +6,13 @@ function dose = matRad_calcParticleDoseBixel(radDepths, radialDist_sq, sigmaIni_
 %   dose = matRad_calcParticleDoseBixel(radDepths, radialDist_sq, sigmaIni_sq, baseData)
 %
 % input
-%   radDepths:      radiological depths
-%   radialDist_sq:  squared radial distance in BEV from central ray
-%   sigmaIni_sq:    initial Gaussian sigma^2 of beam at patient surface
-%   baseData:       base data required for particle dose calculation
-%
+%   radDepths:              radiological depths
+%   radialDist_sq:          squared radial distance in BEV from central ray
+%   sigmaIni_sq:            initial Gaussian sigma^2 of beam at patient surface
+%   baseData:               base data required for particle dose calculation
+%   lungModulation:         Bool if Modulation is taken into account
+%   currmodulationDepth:    depth for modulation calculation
+% 
 % output
 %   dose:   particle dose at specified locations as linear vector
 %
@@ -36,11 +38,36 @@ depths = baseData.depths + baseData.offset;
 % convert from MeV cm^2/g per primary to Gy mm^2 per 1e6 primaries
 conversionFactor = 1.6021766208e-02;
 
-if ~isfield(baseData,'sigma')
+%% lundmodulation implementation
+if exist('lungModulation', 'var') && lungModulation
+
+    %% lundmodulation implementation
+    % Berechnung der modulierten Basisdaten 
+    Zmod = matRad_convBaseData(baseData, max(currmodulationDepth), 350);
+    %%
+    
+    % interpolate depth dose, sigmas, and weights    
+    X = matRad_interp1(depths,[conversionFactor*Zmod baseData.sigma1 baseData.weight baseData.sigma2],radDepths);
+        
+    % set dose for query > tabulated depth dose values to zero
+    X(radDepths > max(depths),1) = 0;
+        
+    % compute lateral sigmas
+    sigmaSq_Narr = X(:,2).^2 + sigmaIni_sq;
+    sigmaSq_Bro  = X(:,4).^2 + sigmaIni_sq;
+    
+    % calculate lateral profile
+    L_Narr =  exp( -radialDist_sq ./ (2*sigmaSq_Narr))./(2*pi*sigmaSq_Narr);
+    L_Bro  =  exp( -radialDist_sq ./ (2*sigmaSq_Bro ))./(2*pi*sigmaSq_Bro );
+    L = baseData.LatCutOff.CompFac * ((1-X(:,3)).*L_Narr + X(:,3).*L_Bro);
+
+    dose = X(:,1).*L;
+    
+elseif ~isfield(baseData,'sigma') && ~exist('lungModulation', 'var') || ~lungModulation 
     
     % interpolate depth dose, sigmas, and weights    
     X = matRad_interp1(depths,[conversionFactor*baseData.Z baseData.sigma1 baseData.weight baseData.sigma2],radDepths);
-    
+       
     % set dose for query > tabulated depth dose values to zero
     X(radDepths > max(depths),1) = 0;
         
