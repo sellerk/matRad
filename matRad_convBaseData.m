@@ -1,8 +1,8 @@
 function [Zmod, normvert, mu, sigma, Pmod] = matRad_convBaseData(baseData, modulationDepth, Pmod)
-% matRad particle dose calculation wrapper
+% matRad convolution of base data 
 % 
 % call
-%   conv = matRad_calcParticleDose(ct,stf,pln,cst,calcDoseDirect)
+%   [Zmod, normvert, mu, sigma, Pmod] = matRad_convBaseData(baseData, modulationDepth, Pmod)
 %
 % input
 %   baseData:           matRad basedata of format machine.data(energyIx)
@@ -27,6 +27,12 @@ function [Zmod, normvert, mu, sigma, Pmod] = matRad_convBaseData(baseData, modul
 %  P_Mod = sigma^2/ mu
 mu = modulationDepth;
 sigma = sqrt((Pmod/1000)*mu);
+
+% Abfrage ob sigma 0 ist => NaN 
+if sigma == 0
+    Zmod = baseData.Z;
+    return
+end
 
 % prolong basedata into the negative to bypass convolution effects at the edge
 % use 5 sigmas to make sure nothing is missing
@@ -66,7 +72,6 @@ Zmod = conv_res./scaling_conv;
 %         'XTickLabel', []);
 %     box(axes1,'on');
 %     hold(axes1,'all');
-%     
 %     min_ref = min(baseData.depths);
 %     max_ref = max(baseData.depths);
 % 

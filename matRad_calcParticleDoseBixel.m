@@ -42,26 +42,45 @@ conversionFactor = 1.6021766208e-02;
 if exist('lungModulation', 'var') && lungModulation
 
     %% lundmodulation implementation
-    % Berechnung der modulierten Basisdaten 
-    Zmod = matRad_convBaseData(baseData, max(currmodulationDepth), 350);
-    %%
-    
+    Zmod = zeros(length(radDepths),1);
+    for innerloop = 1:length(radDepths)
+        % Berechnung der modulierten Basisdaten
+        Zmod(innerloop) = matRad_convBaseData_voxelvise(baseData,...
+            radDepths(innerloop), currmodulationDepth(innerloop), 150);
+        %%
+    end
     % interpolate depth dose, sigmas, and weights    
-    X = matRad_interp1(depths,[conversionFactor*Zmod baseData.sigma1 baseData.weight baseData.sigma2],radDepths);
-        
+    %     X = matRad_interp1(depths,[conversionFactor*Zmod baseData.sigma1 baseData.weight baseData.sigma2],radDepths);
+    %
+    %     % set dose for query > tabulated depth dose values to zero
+    %     X(radDepths > max(depths),1) = 0;
+    %
+    %     % compute lateral sigmas
+    %     sigmaSq_Narr = X(:,2).^2 + sigmaIni_sq;
+    %     sigmaSq_Bro  = X(:,4).^2 + sigmaIni_sq;
+    %
+    %     % calculate lateral profile
+    %     L_Narr =  exp( -radialDist_sq ./ (2*sigmaSq_Narr))./(2*pi*sigmaSq_Narr);
+    %     L_Bro  =  exp( -radialDist_sq ./ (2*sigmaSq_Bro ))./(2*pi*sigmaSq_Bro );
+    %     L = baseData.LatCutOff.CompFac * ((1-X(:,3)).*L_Narr + X(:,3).*L_Bro);
+    %
+    %     dose = X(:,1).*L;
+    
+    X = matRad_interp1(depths,[baseData.sigma1 baseData.weight baseData.sigma2],radDepths);
+    
     % set dose for query > tabulated depth dose values to zero
     X(radDepths > max(depths),1) = 0;
         
     % compute lateral sigmas
-    sigmaSq_Narr = X(:,2).^2 + sigmaIni_sq;
-    sigmaSq_Bro  = X(:,4).^2 + sigmaIni_sq;
+    sigmaSq_Narr = X(:,1).^2 + sigmaIni_sq;
+    sigmaSq_Bro  = X(:,3).^2 + sigmaIni_sq;
     
     % calculate lateral profile
     L_Narr =  exp( -radialDist_sq ./ (2*sigmaSq_Narr))./(2*pi*sigmaSq_Narr);
     L_Bro  =  exp( -radialDist_sq ./ (2*sigmaSq_Bro ))./(2*pi*sigmaSq_Bro );
-    L = baseData.LatCutOff.CompFac * ((1-X(:,3)).*L_Narr + X(:,3).*L_Bro);
+    L = baseData.LatCutOff.CompFac * ((1-X(:,2)).*L_Narr + X(:,2).*L_Bro);
 
-    dose = X(:,1).*L;
+    dose = conversionFactor .* Zmod .*L;
     
 elseif ~isfield(baseData,'sigma') && ~exist('lungModulation', 'var') || ~lungModulation 
     

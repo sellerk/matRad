@@ -150,21 +150,35 @@ stf = matRad_computeSSD(stf,ct);
 %% lundmodulation implementation
 %  create a variable analogue to "ct" for "lung" to hand to raytracer
 if isfield(pln.propOpt, 'lungModulation') && pln.propOpt.lungModulation
-    % modulation cube with properties of ct
-    % this is a test comment 
-    modulation.resolution = ct.resolution;
-    modulation.cubeDim = ct.cubeDim;
-    modulation.numOfCtScen = ct.numOfCtScen;
-    modulation.cube = {zeros(ct.cubeDim)};
-    modulation.x = ct.x;
-    modulation.y = ct.y;
-    modulation.z = ct.z;
-    modulation.hlut = ct.hlut;
-    % set additional filter for modulating material atm its just "lung"
+    % modulation cube with properties of ct      
+    modulation = ct;
+    modulation.numOfCtScen = 2;
+    modulation.cube(2) = {zeros(ct.cubeDim)};
+    modulation.cube(1) = {zeros(ct.cubeDim)};
+    modulation.cubeHU = {ones(ct.cubeDim).*-1024};
+    % in the future: set additional filter for modulating material atm its just "lung"
     for innerloop = 1:size(cst,1)
             if strcmpi(cst{innerloop,2}, 'lung')
-                modulation.cube{1}(cst{innerloop,4}{1}) = ct.cube{1}(cst{innerloop,4}{1});
+                modulation.cube{2}(cst{innerloop,4}{1}) = ct.cube{1}(cst{innerloop,4}{1});             
+                modulation.cubeHU{1}(cst{innerloop,4}{1}) = ct.cubeHU{1}(cst{innerloop,4}{1});
+%                 % take only voxels inside lung
+%                 VlungGrid = [cst{innerloop,4}];
+%                 VlungGrid = unique(vertcat(VlungGrid{:}));
             end
-    end 
+    end
+    
+
+%     filterkernel_std = ones(3,3,3);
+%     filterkernel_mean = ones(3,3,3)./(3^3);
+%     standardDevImage = stdfilt(modulation.cubeHU{1},filterkernel_std);
+%     meanImage = convn(modulation.cubeHU{1}, filterkernel_mean, 'same');
+    
+%     % EQ7 Phys. Med. Biol. 66 (2021) 185002
+%     Pfit = (standardDevImage.^2 ./ (-1000 .* meanImage - meanImage.^2) );
+%     modulation.cube(1) = {nthroot( Pfit,3)};
+%     modulation.cube{1}(modulation.cube{1}<0) = 0;
+%     modulation.cube{1}(modulation.cube{1}>1) = 1;
+% %     temporary mask with 1 inside lung
+    modulation.cube{1}(modulation.cube{2}>0) = 1;
 end
 

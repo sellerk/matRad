@@ -46,22 +46,30 @@ matRad_cfg.dispInfo('matRad: calculate radiological depth cube... ');
 radDepthVctGrid = matRad_rayTracing(stf(i),ct,VctGrid,rot_coordsV,effectiveLateralCutoff);
 matRad_cfg.dispInfo('done.\n');
 
-%% lungmodulation implementation
-% calculate raytracing for all voxels inside lung
-if isfield(pln.propOpt, 'lungModulation') && pln.propOpt.lungModulation
-    fprintf('matRad: calculate depth cube for lungMod...');
-    modulationDepthVctGrid = matRad_rayTracing(stf(i),modulation,VctGrid,rot_coordsV,effectiveLateralCutoff);
-    fprintf('done.\n');
-    % interpolate modulation depth cube to dose grid resolution
-    modulationDepthVdoseGrid = matRad_interpRadDepth...
-    (modulation,1,VctGrid,VdoseGrid,dij.doseGrid.x,dij.doseGrid.y,dij.doseGrid.z,modulationDepthVctGrid);
-end
 %%
-
 % interpolate radiological depth cube to dose grid resolution
 radDepthVdoseGrid = matRad_interpRadDepth...
     (ct,1,VctGrid,VdoseGrid,dij.doseGrid.x,dij.doseGrid.y,dij.doseGrid.z,radDepthVctGrid);
  
 % limit rotated coordinates to positions where ray tracing is availabe
 rot_coordsVdoseGrid = rot_coordsVdoseGrid(~isnan(radDepthVdoseGrid{1}),:);
+
+
+%% lungmodulation implementation
+% calculate raytracing for all voxels inside lung
+if isfield(pln.propOpt, 'lungModulation') && pln.propOpt.lungModulation
+    matRad_cfg.dispInfo('matRad: calculate depth cube for lungMod...');
+    modulationDepthVctGrid = matRad_rayTracing(stf(i),modulation,VctGrid,rot_coordsV,effectiveLateralCutoff);
+%     lungDepthVctGrid = matRad_rayTracing(stf(i),modulation,VlungGrid,rot_coordsV,effectiveLateralCutoff);
+    matRad_cfg.dispInfo('done.\n');
+    % interpolate modulation depth cube to dose grid resolution
+    for currentScen = 1:modulation.numOfCtScen
+        modulationDepthVdoseGrid(currentScen) = matRad_interpRadDepth...
+            (modulation,currentScen,VctGrid,VdoseGrid,dij.doseGrid.x,dij.doseGrid.y,dij.doseGrid.z,modulationDepthVctGrid);
+%         lungDepthVdoseGrid(currentScen) = matRad_interpRadDepth...
+%             (modulation,currentScen,VctGrid,VdoseGrid,dij.doseGrid.x,dij.doseGrid.y,dij.doseGrid.z,modulationDepthVctGrid);
+     end
+    
+end
+
  

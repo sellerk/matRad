@@ -171,7 +171,7 @@ for i = 1:length(stf) % loop over all beams
             radDepths = radDepthVdoseGrid{1}(ix);   
             %% lundmodulation implementation
             if isfield(pln.propOpt, 'lungModulation') && pln.propOpt.lungModulation
-                modulationDepth = modulationDepthVdoseGrid{1}(ix);
+                modulationDepth = modulationDepthVdoseGrid{2}(ix);
             end           
             %%
             % just use tissue classes of voxels found by ray tracer
@@ -264,6 +264,10 @@ for i = 1:length(stf) % loop over all beams
                 %% lundmodulation implementation
                 % calculate particle dose for bixel k on ray j of beam i
                 if isfield(pln.propOpt, 'lungModulation') && pln.propOpt.lungModulation
+                    %precomputation of prolonged basedata needed for
+                    %convolution in calcParticleDoseBixel
+                    [machine.data(energyIx).Z_adapted, machine.data(energyIx).depths_adapted] = matRad_extendBaseData(...
+                        machine.data(energyIx));  
                     bixelDose = matRad_calcParticleDoseBixel(...
                         currRadDepths, ...
                         radialDist_sq(currIx), ...
@@ -271,6 +275,8 @@ for i = 1:length(stf) % loop over all beams
                         machine.data(energyIx),...
                         pln.propOpt.lungModulation,...     
                         currmodulationDepth);
+                    % change, that currmodulationDepth is the 
+                    % modulation map 
                 else
                     bixelDose = matRad_calcParticleDoseBixel(...
                         currRadDepths, ...
