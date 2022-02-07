@@ -158,15 +158,18 @@ if isfield(pln.propOpt, 'lungModulation') && pln.propOpt.lungModulation
     modulation.cubeHU = {ones(ct.cubeDim).*-1024};
     % in the future: set additional filter for modulating material atm its just "lung"
     for innerloop = 1:size(cst,1)
-            if strcmpi(cst{innerloop,2}, 'lung')
-                modulation.cube{2}(cst{innerloop,4}{1}) = ct.cube{1}(cst{innerloop,4}{1});             
-                modulation.cubeHU{1}(cst{innerloop,4}{1}) = ct.cubeHU{1}(cst{innerloop,4}{1});
-%                 % take only voxels inside lung
-%                 VlungGrid = [cst{innerloop,4}];
-%                 VlungGrid = unique(vertcat(VlungGrid{:}));
-            end
+        %             if strcmpi(cst{innerloop,2}, 'lung')
+        if contains(cst{innerloop,2}, 'Lung') || contains(cst{innerloop,2}, 'lung')
+
+            modulation.cube{2}(cst{innerloop,4}{1}) = ct.cube{1}(cst{innerloop,4}{1});
+            modulation.cubeHU{1}(cst{innerloop,4}{1}) = ct.cubeHU{1}(cst{innerloop,4}{1});
+            %                 % take only voxels inside lung
+            %                 VlungGrid = [cst{innerloop,4}];
+            %                 VlungGrid = unique(vertcat(VlungGrid{:}));
+        end
+        assignin('base', 'modulation', modulation)
     end
-    
+
 
 %     filterkernel_std = ones(3,3,3);
 %     filterkernel_mean = ones(3,3,3)./(3^3);
@@ -180,5 +183,6 @@ if isfield(pln.propOpt, 'lungModulation') && pln.propOpt.lungModulation
 %     modulation.cube{1}(modulation.cube{1}>1) = 1;
 % %     temporary mask with 1 inside lung
     modulation.cube{1}(modulation.cube{2}>0) = 1;
+    figure,imshow(modulation.cube{2}(:,:,round(modulation.cubeDim(3)/2)))
 end
 

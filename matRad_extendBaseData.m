@@ -31,6 +31,7 @@ Z = [addZ;baseData.Z];
 
 Z_adapted = Z;
 depths_adapted = depths;
+% Z_adapted_fft = fft(Z_adapted);
 % baseData;
 
 end

@@ -68,8 +68,22 @@ if isfield(pln.propOpt, 'lungModulation') && pln.propOpt.lungModulation
             (modulation,currentScen,VctGrid,VdoseGrid,dij.doseGrid.x,dij.doseGrid.y,dij.doseGrid.z,modulationDepthVctGrid);
 %         lungDepthVdoseGrid(currentScen) = matRad_interpRadDepth...
 %             (modulation,currentScen,VctGrid,VdoseGrid,dij.doseGrid.x,dij.doseGrid.y,dij.doseGrid.z,modulationDepthVctGrid);
-     end
-    
+    end
+%   prepare basedata for the convolution => 
+%   precomputation of prolonged basedata needed for
+%   convolution in calcParticleDoseBixel
+%   currently all energies are prolonged => consider prolonging only used
+%   energies
+% min_energyIx = min(round2(stf(i).ray(j).energy,4)) == round2([machine.data.energy],4);
+min_energyIx = 1;
+% max_energyIx = max(round2(stf(i).ray(j).energy,4)) == round2([machine.data.energy],4);
+max_energyIx = 290;
+for energiestep = min_energyIx:max_energyIx
+    [machine.data(energiestep).Z_adapted, machine.data(energiestep).depths_adapted] = matRad_extendBaseData(...
+        machine.data(energiestep));
+end
+     
+
 end
 
  

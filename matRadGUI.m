@@ -2184,6 +2184,8 @@ end
 
 pln.propOpt.runSequencing = logical(get(handles.btnRunSequencing,'Value'));
 pln.propOpt.runDAO = logical(get(handles.btnRunDAO,'Value'));
+pln.propOpt.lungModulation = logical(get(handles.radiobtnEnableLungMod,'Value'));
+
 
 try
     cst = evalin('base','cst');
@@ -3709,7 +3711,32 @@ else %Profile view
     cursorText{2} = [get(target,'DisplayName') ': ' num2str(pos(2),3)];
 end
 
+% --- Executes on button press in radiobtnEnableLungMod.
+function radiobtnEnableLungMod_Callback(hObject, eventdata, handles)
+pln = evalin('base','pln');
+newboolLungMod = logical(get(handles.radiobtnEnableLungMod,'Value'));
+% pln.propOpt.lungModulation = logical(get(handles.radiobtnEnableLungMod,'Value'));
+% pln.propOpt.lungModulation 
+% get(handles.popMenuBioOpt,'Value'),:);
+% pln.propOpt.lungModulation = true;
+% NewBioOptimization = contentBioOpt(get(handles.popMenuBioOpt,'Value'),:);
+% 
+if handles.State > 0
+    if ~isfield('pln.propOpt', 'lungModulation')
+        pln.propOpt.lungModulation = false;   
+        handles.State = 1;
+    else
+        if pln.propOpt.lungModulation && newboolLungMod
+            % do nothing - re-optimization is still possible
+        else
+            handles.State = 1;
+        end
+    end
+end
+getPlnFromGUI(handles);
+UpdateState(handles);
 
+guidata(hObject,handles);
 
 % --- Executes on selection change in popMenuBioOpt.
 function popMenuBioOpt_Callback(hObject, ~, handles)
@@ -4278,4 +4305,7 @@ function cstTableSlider_CreateFcn(hObject, eventdata, handles)
 if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
     set(hObject,'BackgroundColor',[.9 .9 .9]);
 end
+
+
+
 

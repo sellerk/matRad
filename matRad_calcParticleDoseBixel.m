@@ -43,11 +43,18 @@ if exist('lungModulation', 'var') && lungModulation
 
     %% lundmodulation implementation
     Zmod = zeros(length(radDepths),1);
-    for innerloop = 1:length(radDepths)
+    % no lung penetrated => calculation as in matRad original
+    Zmod((currmodulationDepth ==0)) = matRad_interp1(baseData.depths, baseData.Z, radDepths((currmodulationDepth ==0)));
+    parfor innerloop = 1:length(radDepths)
+        % no modulation depth => skip 
+        if currmodulationDepth(innerloop) == 0
+            continue
+        else
         % Berechnung der modulierten Basisdaten
         Zmod(innerloop) = matRad_convBaseData_voxelvise(baseData,...
-            radDepths(innerloop), currmodulationDepth(innerloop), 150);
+            radDepths(innerloop), currmodulationDepth(innerloop), 450);
         %%
+        end
     end
     % interpolate depth dose, sigmas, and weights    
     %     X = matRad_interp1(depths,[conversionFactor*Zmod baseData.sigma1 baseData.weight baseData.sigma2],radDepths);
