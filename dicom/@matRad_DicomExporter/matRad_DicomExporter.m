@@ -6,7 +6,7 @@ classdef matRad_DicomExporter < handle
     %
     % dcmExpObj          = matRad_DicomExporter;   % create instance of matRad_DicomExporter
     % dcmExpObj.dicomDir = 'pathAsString';         % set the output path for the Dicom export
-    % dcmExp.matRad_exportDicom();                 % run the export
+    % dcmExpObj.matRad_exportDicom();                 % run the export
     %
     %
     % References
@@ -68,6 +68,11 @@ classdef matRad_DicomExporter < handle
         rtDoseNames
         rtDoseMetas
         rtDoseExportStatus
+
+        %RTPlan
+        rtPlanFilePrefix = 'RTPlan_';
+        rtPlanMeta
+        rtPlanExportStatus
         
         % some dictionaries
         externalContourDict = {'EXTERNAL','BODY','PATIENT'}; %Names to identify external contours

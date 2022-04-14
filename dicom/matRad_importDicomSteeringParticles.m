@@ -42,7 +42,7 @@ dlgBaseDataText = ['Import steering information from DICOM Plan.','Choose corres
 if ~ispc
     uiwait(helpdlg(dlgBaseDataText,['DICOM import - ', pln.radiationMode, ' base data' ]));
 end
-[fileName,pathName] = uigetfile('*.mat', dlgBaseDataText);
+[fileName,pathName] = uigetfile([MatRad_Config.matRadRoot, '\basedata\protons_MIT_P_doubleGauss.mat'], dlgBaseDataText);
 load([pathName filesep fileName]);
 
 ix = find(fileName == '_');
@@ -258,7 +258,10 @@ for i = 1:length(BeamSeqNames)
         % loop over all energies
         numOfEnergy = length(stf(i).ray(j).energy);
         for k = 1:numOfEnergy
-            energyIndex = find(abs([machine.data(:).energy]-stf(i).ray(j).energy(k))<10^-2);
+            % changed energy difference to also work for old Ariaplans (VeF
+            % / KiB Data)
+            % energyIndex = find(abs([machine.data(:).energy]-stf(i).ray(j).energy(k))<10^-2);
+            energyIndex = find(abs([machine.data(:).energy]-stf(i).ray(j).energy(k))<10^-1);
             if ~isempty(energyIndex)
                 stf(i).ray(j).energy(k) = machine.data(energyIndex).energy;
             else
@@ -277,7 +280,10 @@ for i = 1:length(BeamSeqNames)
             energyIxTemp = find([machine.data.energy] == energyTemp);
             % hier gab es ein Problem mit der Rundung deswegen Abfrage auf
             % kleiner 10 e-2 gesetzt
-            focusIxTemp = find(abs([machine.data(energyIxTemp).initFocus.SisFWHMAtIso] - focusFWHM )< 10^-2);
+            % changed energy difference to also work for old Ariaplans (VeF
+            % / KiB Data)
+%             focusIxTemp = find(abs([machine.data(energyIxTemp).initFocus.SisFWHMAtIso] - focusFWHM )< 10^-2);
+            focusIxTemp = find(abs([machine.data(energyIxTemp).initFocus.SisFWHMAtIso] - focusFWHM )< 10^0);
             stf(i).ray(j).focusIx(k) = focusIxTemp;
             stf(i).ray(j).focusFWHM(k) = machine.data(energyIxTemp).initFocus.SisFWHMAtIso(stf(i).ray(j).focusIx(k));
         end

@@ -32,7 +32,7 @@ function obj = matRad_exportDicomRTPlan(obj)
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 matRad_cfg = MatRad_Config.instance();
-matRad_cfg.dispInfo('Exporting DICOM RTPlan...\n');      
+matRad_cfg.dispWarning('RTPlan export is not yet implemented...\n');            
 
 
 %% Meta data
@@ -81,75 +81,75 @@ meta.PatientSex = obj.PatientSex;
 meta.SeriesInstanceUID = dicomuid;
 
 
-% for i = 1:numel(doseFieldNames)
-%     doseName = doseFieldNames{i};
-%     
-%     %Now check if we export physical or RBE weighted dose, they are known
-%     %to dicom
-%     if strncmp(doseName,'physicalDose',12)
-%         doseType = 'PHYSICAL';
-%     elseif strncmp(doseName,'RBExDose',8)
-%         doseType = 'EFFECTIVE';
-%     else
-%         fprintf('Dose Cube ''%s'' of unknown type for DICOM. Not exported!\n',doseName);
-%         continue;
-%     end
-%     
-%     %Now check if we export a single beam
-%     if ~isempty(regexp(doseName,'_beam(\d+)','once'))
-%         %We export a single beam fraction
-%         deliveryType = 'BEAM_SESSION';
-%     else
-%         deliveryType = 'FRACTION';
-%     end
-%     
-%     
-%     doseCube = zeros(ct.cubeDim(1),ct.cubeDim(2),1,ct.cubeDim(3));
-%     doseCube(:,:,1,:) = obj.resultGUI.(doseFieldNames{i});
-%     
-%     minDose = min(doseCube(:));
-%     maxDose = max(doseCube(:));
-%     
-%     if minDose < 0
-%         fprintf('Dose Cube ''%s'' has negative values. Not exported!\n',doseName);
-%         continue;
-%     end
-%     
-%     doseCubeFac = maxDose / double(uint16(Inf));   
-%     doseCube = uint16(doseCube ./ doseCubeFac);
-%          
-%     metaCube = meta;
-%     metaCube.DoseType = doseType;
-%     metaCube.DoseSummationType = deliveryType;
-%        
-%     %ID of the RTDose
-%     meta.SeriesInstanceUID = dicomuid;    
-%     metaCube.SeriesNumber = i;
-%     metaCube.InstanceNumber = 1;
-%     metaCube.DoseGridScaling = doseCubeFac;
-%     
-%     meta.SOPInstanceUID = dicomuid;
-%     meta.MediaStorageSOPInstanceUID = meta.SOPInstanceUID;
-%     
-    fileName = [obj.rtPlanFilePrefix '_' doseName '.dcm'];
-%     
+for i = 1:numel(doseFieldNames)
+    doseName = doseFieldNames{i};
+    
+    %Now check if we export physical or RBE weighted dose, they are known
+    %to dicom
+    if strncmp(doseName,'physicalDose',12)
+        doseType = 'PHYSICAL';
+    elseif strncmp(doseName,'RBExDose',8)
+        doseType = 'EFFECTIVE';
+    else
+        fprintf('Dose Cube ''%s'' of unknown type for DICOM. Not exported!\n',doseName);
+        continue;
+    end
+    
+    %Now check if we export a single beam
+    if ~isempty(regexp(doseName,'_beam(\d+)','once'))
+        %We export a single beam fraction
+        deliveryType = 'BEAM_SESSION';
+    else
+        deliveryType = 'FRACTION';
+    end
+    
+    
+    doseCube = zeros(ct.cubeDim(1),ct.cubeDim(2),1,ct.cubeDim(3));
+    doseCube(:,:,1,:) = obj.resultGUI.(doseFieldNames{i});
+    
+    minDose = min(doseCube(:));
+    maxDose = max(doseCube(:));
+    
+    if minDose < 0
+        fprintf('Dose Cube ''%s'' has negative values. Not exported!\n',doseName);
+        continue;
+    end
+    
+    doseCubeFac = maxDose / double(uint16(Inf));   
+    doseCube = uint16(doseCube ./ doseCubeFac);
+         
+    metaCube = meta;
+    metaCube.DoseType = doseType;
+    metaCube.DoseSummationType = deliveryType;
+       
+    %ID of the RTDose
+    meta.SeriesInstanceUID = dicomuid;    
+    metaCube.SeriesNumber = i;
+    metaCube.InstanceNumber = 1;
+    metaCube.DoseGridScaling = doseCubeFac;
+    
+    meta.SOPInstanceUID = dicomuid;
+    meta.MediaStorageSOPInstanceUID = meta.SOPInstanceUID;
+    
+    fileName = [obj.rtDoseFilePrefix num2str(i) '_' doseName '.dcm'];
+    
     env = matRad_getEnvironment();
     if strcmp(env,'OCTAVE')
-        disp('not implemented')
+        dicomwrite(doseCube,fullfile(obj.dicomDir,fileName),metaCube);
     else
-        status = dicomwrite([],fullfile(obj.dicomDir,fileName),metaCube,'CreateMode','copy');%,'TransferSyntax',TransferSyntaxUID);
+        status = dicomwrite(doseCube,fullfile(obj.dicomDir,fileName),metaCube,'CreateMode','copy');%,'TransferSyntax',TransferSyntaxUID);
         if ~isempty(status)
             obj.rtDoseExportStatus = obj.addStruct2StructArray(obj.rtDoseExportStatus,status,i);
         end
     end
-%     
-%     
-%     obj.rtDoseMetas = obj.addStruct2StructArray(obj.rtDoseMetas,metaCube);
-%     
-%     obj.rtDoseNames{i} = doseFieldNames{i};
-%     
-%     matRad_progress(i,numel(doseFieldNames));
-% end
+    
+    
+    obj.rtDoseMetas = obj.addStruct2StructArray(obj.rtDoseMetas,metaCube);
+    
+    obj.rtDoseNames{i} = doseFieldNames{i};
+    
+    matRad_progress(i,numel(doseFieldNames));
+end
 
 
 end

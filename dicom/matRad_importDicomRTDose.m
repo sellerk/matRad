@@ -99,7 +99,9 @@ for i = 1 : numDoseFiles
     if ~isempty(doseInstanceHelper)
         instanceSuffix = ['_' num2str(doseInstanceHelper)];
     else
-        instanceSuffix = '';
+%         changed 20220209 MaW to import eclipse doses
+%         instanceSuffix = '';
+        instanceSuffix = num2str(i);
     end
         
     

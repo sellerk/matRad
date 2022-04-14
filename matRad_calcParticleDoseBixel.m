@@ -52,7 +52,7 @@ if exist('lungModulation', 'var') && lungModulation
         else
         % Berechnung der modulierten Basisdaten
         Zmod(innerloop) = matRad_convBaseData_voxelvise(baseData,...
-            radDepths(innerloop), currmodulationDepth(innerloop), 450);
+            radDepths(innerloop), currmodulationDepth(innerloop), 800);
         %%
         end
     end

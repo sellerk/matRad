@@ -107,12 +107,25 @@ dose.dicomInfo.PixelSpacing            = [target_resolution.x; ...
 dose.dicomInfo.ImagePositionPatient    = [min(dose.x); min(dose.y); min(dose.z)];
 dose.dicomInfo.SliceThickness          = target_resolution.z;
 dose.dicomInfo.ImageOrientationPatient = doseInfo.ImageOrientationPatient;
-dose.dicomInfo.DoseType                = doseInfo.DoseType;
-dose.dicomInfo.DoseSummationType       = doseInfo.DoseSummationType;
 %dose.dicomInfo.InstanceNumber          = doseInfo.InstanceNumber; %Not
 %always given
 dose.dicomInfo.SOPClassUID             = doseInfo.SOPClassUID;
 dose.dicomInfo.SOPInstanceUID          = doseInfo.SOPInstanceUID;
-dose.dicomInfo.ReferencedRTPlanSequence = doseInfo.ReferencedRTPlanSequence;
+try 
+    dose.dicomInfo.DoseType                = doseInfo.DoseType;
+    dose.dicomInfo.DoseSummationType       = doseInfo.DoseSummationType;
+    dose.dicomInfo.ReferencedRTPlanSequence = doseInfo.ReferencedRTPlanSequence;
+catch 
+    if contains(doseInfo.Manufacturer, 'TOPAS')
+        dose.dicomInfo.DoseType                = 'PHYSICAL';
+        dose.dicomInfo.DoseSummationType       = 'PLAN';
+    else 
+        return
+    end
+end
+
+
+
+
 
 end

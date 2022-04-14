@@ -65,8 +65,15 @@ if isfield(pln,'propStf') && isfield(pln.propStf,'addMargin')
    addmarginBool = pln.propStf.addMargin; 
 end
 
+% added to specify margin size in propStf
+if isfield(pln, 'propStf') && isfield(pln.propStf,'Margin')
+    Margin = pln.propStf.Margin;
+else
+    Margin = ct.resolution;
+end
+
 if addmarginBool
-    voiTarget = matRad_addMargin(voiTarget,cst,ct.resolution,ct.resolution,true);
+    voiTarget = matRad_addMargin(voiTarget,cst,ct.resolution,Margin,true);
     V   = find(voiTarget>0);
 end
 
@@ -272,8 +279,11 @@ for i = 1:length(pln.propStf.gantryAngles)
                                 repmat(stf(i).ray(j).energy,length([machine.data]),1))));
 
                 % get for each spot the focus index
+                % added 2022.02.23 by sellerk
+                % safe focusFWHM to be consistent with Syngo Plan imports 
                 for k = 1:stf(i).numOfBixelsPerRay(j)                    
                     focusIx(k) = find(machine.data(vEnergyIx(k)).initFocus.SisFWHMAtIso > currentMinimumFWHM,1,'first');
+                    stf(i).ray(j).focusFWHM(k) = machine.data(vEnergyIx(k)).initFocus.SisFWHMAtIso; 
                 end
 
                 stf(i).ray(j).focusIx = focusIx';
@@ -342,6 +352,7 @@ for i = 1:length(pln.propStf.gantryAngles)
                 maskEnergy = stf(i).ray(j).energy(k) == availableEnergies;
                 if ~useEnergyBool(maskEnergy)
                     stf(i).ray(j).energy(k)     = [];
+                    stf(i).ray(j).focusFWHM(k)  = []; % added to match syngo RTplan import
                     stf(i).ray(j).focusIx(k)    = [];
                     stf(i).numOfBixelsPerRay(j) = stf(i).numOfBixelsPerRay(j) - 1;
                 end

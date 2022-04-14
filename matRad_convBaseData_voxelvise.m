@@ -107,7 +107,7 @@ Zmod_vox = matRad_interp1(baseData.depths, Zmod, radiologicalDepth);
 %         'FontSize',14);
 %     box(axes1,'on');
 %     hold(axes1,'all');
-%     plot(normvert(:,1)+mu, normvert(:,2),'LineWidth', 3);
+%     plot(baseData.depths_adapted +mu , normvert,'LineWidth', 3);
 %     updateAxesProperties(gca, 'LineWidth', 3,  'FontSize', 20, 'xlim', [min_ref max_ref])%, 'ylim', [0 0.08])
 %     xlabel('range in water /mm')
 %     ylabel('frequency')

@@ -35,7 +35,12 @@ function cBarHandle = matRad_plotColorbar(axesHandle,cMap,window,varargin)
 v=version;
 
 colormap(axesHandle,cMap);
-caxis(window);
+
+if window(1) == window(2)
+    window = [0, 1024];
+else
+    caxis(window);
+end
 
 if str2double(v(1:3))>=8.5
     cBarHandle = colorbar(axesHandle,varargin{:});

@@ -2010,6 +2010,13 @@ end
 set(handles.editBixelWidth,'String',bixelWidth);
 set(handles.editFraction,'String',num2str(pln.numOfFractions));
 
+% handle lung modulation
+if ~isfield(pln.propOpt,'lungModulation') || (isfield(pln.propOpt,'lungModulation') && pln.propOpt.lungModulation == false)
+    pln.propOpt.lungModulation = false;
+    set(handles.radiobtnEnableLungMod,'Value',0)
+end   
+
+
 if isfield(pln.propStf,'isoCenter')
     if size(unique(pln.propStf.isoCenter,'rows'),1) == 1
         set(handles.editIsoCenter,'String',regexprep(num2str((round(pln.propStf.isoCenter(1,:)*10))./10), '\s+', ' '));
@@ -2185,6 +2192,7 @@ end
 pln.propOpt.runSequencing = logical(get(handles.btnRunSequencing,'Value'));
 pln.propOpt.runDAO = logical(get(handles.btnRunDAO,'Value'));
 pln.propOpt.lungModulation = logical(get(handles.radiobtnEnableLungMod,'Value'));
+
 
 
 try
