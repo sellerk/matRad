@@ -1,0 +1,25 @@
+
+s:Ma/Material_HU_m1024/BaseMaterial = "G4_WATER"
+d:Ma/Material_HU_m1024/Density = 0.001000 g/cm3
+s:Ma/Material_HU_m986/BaseMaterial = "G4_WATER"
+d:Ma/Material_HU_m986/Density = 0.014000 g/cm3
+s:Ma/Material_HU_m910/BaseMaterial = "G4_WATER"
+d:Ma/Material_HU_m910/Density = 0.090000 g/cm3
+s:Ma/Material_HU_m683/BaseMaterial = "G4_WATER"
+d:Ma/Material_HU_m683/Density = 0.317000 g/cm3
+s:Ma/Material_HU_0/BaseMaterial = "G4_WATER"
+d:Ma/Material_HU_0/Density = 1.000000 g/cm3
+s:Ge/Patient/Parent="World"
+s:Ge/Patient/Type = "TsImageCube"
+s:Ge/Patient/InputDirectory = "./"
+s:Ge/Patient/InputFile = "matRad_cube.dat"
+s:Ge/Patient/ImagingtoMaterialConverter = "MaterialTagNumber"
+i:Ge/Patient/NumberOfVoxelsX = 96
+i:Ge/Patient/NumberOfVoxelsY = 96
+iv:Ge/Patient/NumberOfVoxelsZ = 1 96
+d:Ge/Patient/VoxelSizeX       = 5.000 mm
+d:Ge/Patient/VoxelSizeY       = 5.000 mm
+dv:Ge/Patient/VoxelSizeZ       = 1 5.000 mm
+s:Ge/Patient/DataType  = "SHORT"
+iv:Ge/Patient/MaterialTagNumbers = 5 -1024  -986  -910  -683     0
+sv:Ge/Patient/MaterialNames = 5 "Material_HU_m1024" "Material_HU_m986" "Material_HU_m910" "Material_HU_m683" "Material_HU_0"

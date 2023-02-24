@@ -1,0 +1,631 @@
+G4WT18 > 
+Topas experienced an error in scoring.
+G4WT18 > A scorer in the Component: "Patient"
+G4WT18 > has been called for a hit in the non-parameterized volume named: "Patient/Patient_Y_Division"
+G4WT18 > But this deos not make sense, as this scorer should only get called for hits
+G4WT18 > in a parameterized volume (volume name would include the string "_Division").
+G4WT18 > We think this may sometimes happen because Geant4 navigation gets into a corrupted state.
+G4WT18 > This hit will be omitted from scoring.
+G4WT18 > A note at end of session will show total number of unscored steps and the total unscored energy.
+G4WT18 > In some cases the unscored energy is small enough that you can ignore this issue.
+G4WT18 > This hit's energy deposit would have been: 6.55581e-11 MeV
+G4WT18 > 
+Topas experienced an error in scoring.
+G4WT18 > A scorer in the Component: "Patient"
+G4WT18 > has been called for a hit in the non-parameterized volume named: "Patient/Patient_Y_Division"
+G4WT18 > But this deos not make sense, as this scorer should only get called for hits
+G4WT18 > in a parameterized volume (volume name would include the string "_Division").
+G4WT18 > We think this may sometimes happen because Geant4 navigation gets into a corrupted state.
+G4WT18 > This hit will be omitted from scoring.
+G4WT18 > A note at end of session will show total number of unscored steps and the total unscored energy.
+G4WT18 > In some cases the unscored energy is small enough that you can ignore this issue.
+G4WT18 > This hit's energy deposit would have been: 6.55581e-11 MeV
+G4WT3 > 
+Topas experienced an error in scoring.
+G4WT3 > A scorer in the Component: "Patient"
+G4WT3 > has been called for a hit in the non-parameterized volume named: "Patient/Patient_Y_Division"
+G4WT3 > But this deos not make sense, as this scorer should only get called for hits
+G4WT3 > in a parameterized volume (volume name would include the string "_Division").
+G4WT3 > We think this may sometimes happen because Geant4 navigation gets into a corrupted state.
+G4WT3 > This hit will be omitted from scoring.
+G4WT3 > A note at end of session will show total number of unscored steps and the total unscored energy.
+G4WT3 > In some cases the unscored energy is small enough that you can ignore this issue.
+G4WT3 > This hit's energy deposit would have been: 3.2299e-12 MeV
+G4WT3 > 
+Topas experienced an error in scoring.
+G4WT3 > A scorer in the Component: "Patient"
+G4WT3 > has been called for a hit in the non-parameterized volume named: "Patient/Patient_Y_Division"
+G4WT3 > But this deos not make sense, as this scorer should only get called for hits
+G4WT3 > in a parameterized volume (volume name would include the string "_Division").
+G4WT3 > We think this may sometimes happen because Geant4 navigation gets into a corrupted state.
+G4WT3 > This hit will be omitted from scoring.
+G4WT3 > A note at end of session will show total number of unscored steps and the total unscored energy.
+G4WT3 > In some cases the unscored energy is small enough that you can ignore this issue.
+G4WT3 > This hit's energy deposit would have been: 3.2299e-12 MeV
+G4WT22 > 
+Topas experienced an error in scoring.
+G4WT22 > A scorer in the Component: "Patient"
+G4WT22 > has been called for a hit in the non-parameterized volume named: "Patient/Patient_Y_Division"
+G4WT22 > But this deos not make sense, as this scorer should only get called for hits
+G4WT22 > in a parameterized volume (volume name would include the string "_Division").
+G4WT22 > We think this may sometimes happen because Geant4 navigation gets into a corrupted state.
+G4WT22 > This hit will be omitted from scoring.
+G4WT22 > A note at end of session will show total number of unscored steps and the total unscored energy.
+G4WT22 > In some cases the unscored energy is small enough that you can ignore this issue.
+G4WT22 > This hit's energy deposit would have been: 2.2227e-11 MeV
+G4WT22 > 
+Topas experienced an error in scoring.
+G4WT22 > A scorer in the Component: "Patient"
+G4WT22 > has been called for a hit in the non-parameterized volume named: "Patient/Patient_Y_Division"
+G4WT22 > But this deos not make sense, as this scorer should only get called for hits
+G4WT22 > in a parameterized volume (volume name would include the string "_Division").
+G4WT22 > We think this may sometimes happen because Geant4 navigation gets into a corrupted state.
+G4WT22 > This hit will be omitted from scoring.
+G4WT22 > A note at end of session will show total number of unscored steps and the total unscored energy.
+G4WT22 > In some cases the unscored energy is small enough that you can ignore this issue.
+G4WT22 > This hit's energy deposit would have been: 2.2227e-11 MeV
+G4WT7 > 
+Topas experienced an error in scoring.
+G4WT7 > A scorer in the Component: "Patient"
+G4WT7 > has been called for a hit in the non-parameterized volume named: "Patient/Patient_Y_Division"
+G4WT7 > But this deos not make sense, as this scorer should only get called for hits
+G4WT7 > in a parameterized volume (volume name would include the string "_Division").
+G4WT7 > We think this may sometimes happen because Geant4 navigation gets into a corrupted state.
+G4WT7 > This hit will be omitted from scoring.
+G4WT7 > A note at end of session will show total number of unscored steps and the total unscored energy.
+G4WT7 > In some cases the unscored energy is small enough that you can ignore this issue.
+G4WT7 > This hit's energy deposit would have been: 1.58e-11 MeV
+G4WT7 > 
+Topas experienced an error in scoring.
+G4WT7 > A scorer in the Component: "Patient"
+G4WT7 > has been called for a hit in the non-parameterized volume named: "Patient/Patient_Y_Division"
+G4WT7 > But this deos not make sense, as this scorer should only get called for hits
+G4WT7 > in a parameterized volume (volume name would include the string "_Division").
+G4WT7 > We think this may sometimes happen because Geant4 navigation gets into a corrupted state.
+G4WT7 > This hit will be omitted from scoring.
+G4WT7 > A note at end of session will show total number of unscored steps and the total unscored energy.
+G4WT7 > In some cases the unscored energy is small enough that you can ignore this issue.
+G4WT7 > This hit's energy deposit would have been: 1.58e-11 MeV
+G4WT21 > 
+Topas experienced an error in scoring.
+G4WT21 > A scorer in the Component: "Patient"
+G4WT21 > has been called for a hit in the non-parameterized volume named: "Patient/Patient_Y_Division"
+G4WT21 > But this deos not make sense, as this scorer should only get called for hits
+G4WT21 > in a parameterized volume (volume name would include the string "_Division").
+G4WT21 > We think this may sometimes happen because Geant4 navigation gets into a corrupted state.
+G4WT21 > This hit will be omitted from scoring.
+G4WT21 > A note at end of session will show total number of unscored steps and the total unscored energy.
+G4WT21 > In some cases the unscored energy is small enough that you can ignore this issue.
+G4WT21 > This hit's energy deposit would have been: 1.00537e-11 MeV
+G4WT21 > 
+Topas experienced an error in scoring.
+G4WT21 > A scorer in the Component: "Patient"
+G4WT21 > has been called for a hit in the non-parameterized volume named: "Patient/Patient_Y_Division"
+G4WT21 > But this deos not make sense, as this scorer should only get called for hits
+G4WT21 > in a parameterized volume (volume name would include the string "_Division").
+G4WT21 > We think this may sometimes happen because Geant4 navigation gets into a corrupted state.
+G4WT21 > This hit will be omitted from scoring.
+G4WT21 > A note at end of session will show total number of unscored steps and the total unscored energy.
+G4WT21 > In some cases the unscored energy is small enough that you can ignore this issue.
+G4WT21 > This hit's energy deposit would have been: 1.00537e-11 MeV
+G4WT14 > 
+Topas experienced an error in scoring.
+G4WT14 > A scorer in the Component: "Patient"
+G4WT14 > has been called for a hit in the non-parameterized volume named: "Patient/Patient_Y_Division"
+G4WT14 > But this deos not make sense, as this scorer should only get called for hits
+G4WT14 > in a parameterized volume (volume name would include the string "_Division").
+G4WT14 > We think this may sometimes happen because Geant4 navigation gets into a corrupted state.
+G4WT14 > This hit will be omitted from scoring.
+G4WT14 > A note at end of session will show total number of unscored steps and the total unscored energy.
+G4WT14 > In some cases the unscored energy is small enough that you can ignore this issue.
+G4WT14 > This hit's energy deposit would have been: 1.24611e-11 MeV
+G4WT14 > 
+Topas experienced an error in scoring.
+G4WT14 > A scorer in the Component: "Patient"
+G4WT14 > has been called for a hit in the non-parameterized volume named: "Patient/Patient_Y_Division"
+G4WT14 > But this deos not make sense, as this scorer should only get called for hits
+G4WT14 > in a parameterized volume (volume name would include the string "_Division").
+G4WT14 > We think this may sometimes happen because Geant4 navigation gets into a corrupted state.
+G4WT14 > This hit will be omitted from scoring.
+G4WT14 > A note at end of session will show total number of unscored steps and the total unscored energy.
+G4WT14 > In some cases the unscored energy is small enough that you can ignore this issue.
+G4WT14 > This hit's energy deposit would have been: 1.24611e-11 MeV
+G4WT17 > 
+Topas experienced an error in scoring.
+G4WT17 > A scorer in the Component: "Patient"
+G4WT17 > has been called for a hit in the non-parameterized volume named: "Patient/Patient_Y_Division"
+G4WT17 > But this deos not make sense, as this scorer should only get called for hits
+G4WT17 > in a parameterized volume (volume name would include the string "_Division").
+G4WT17 > We think this may sometimes happen because Geant4 navigation gets into a corrupted state.
+G4WT17 > This hit will be omitted from scoring.
+G4WT17 > A note at end of session will show total number of unscored steps and the total unscored energy.
+G4WT17 > In some cases the unscored energy is small enough that you can ignore this issue.
+G4WT17 > This hit's energy deposit would have been: 2.00326e-11 MeV
+G4WT17 > 
+Topas experienced an error in scoring.
+G4WT17 > A scorer in the Component: "Patient"
+G4WT17 > has been called for a hit in the non-parameterized volume named: "Patient/Patient_Y_Division"
+G4WT17 > But this deos not make sense, as this scorer should only get called for hits
+G4WT17 > in a parameterized volume (volume name would include the string "_Division").
+G4WT17 > We think this may sometimes happen because Geant4 navigation gets into a corrupted state.
+G4WT17 > This hit will be omitted from scoring.
+G4WT17 > A note at end of session will show total number of unscored steps and the total unscored energy.
+G4WT17 > In some cases the unscored energy is small enough that you can ignore this issue.
+G4WT17 > This hit's energy deposit would have been: 2.00326e-11 MeV
+G4WT14 > 
+Topas experienced an error in scoring.
+G4WT14 > A scorer in the Component: "Patient"
+G4WT14 > has been called for a hit in the non-parameterized volume named: "Patient/Patient_Y_Division"
+G4WT14 > But this deos not make sense, as this scorer should only get called for hits
+G4WT14 > in a parameterized volume (volume name would include the string "_Division").
+G4WT14 > We think this may sometimes happen because Geant4 navigation gets into a corrupted state.
+G4WT14 > This hit will be omitted from scoring.
+G4WT14 > A note at end of session will show total number of unscored steps and the total unscored energy.
+G4WT14 > In some cases the unscored energy is small enough that you can ignore this issue.
+G4WT14 > This hit's energy deposit would have been: 1.37297e-11 MeV
+G4WT14 > 
+Topas experienced an error in scoring.
+G4WT14 > A scorer in the Component: "Patient"
+G4WT14 > has been called for a hit in the non-parameterized volume named: "Patient/Patient_Y_Division"
+G4WT14 > But this deos not make sense, as this scorer should only get called for hits
+G4WT14 > in a parameterized volume (volume name would include the string "_Division").
+G4WT14 > We think this may sometimes happen because Geant4 navigation gets into a corrupted state.
+G4WT14 > This hit will be omitted from scoring.
+G4WT14 > A note at end of session will show total number of unscored steps and the total unscored energy.
+G4WT14 > In some cases the unscored energy is small enough that you can ignore this issue.
+G4WT14 > This hit's energy deposit would have been: 1.37297e-11 MeV
+G4WT7 > 
+Topas experienced an error in scoring.
+G4WT7 > A scorer in the Component: "Patient"
+G4WT7 > has been called for a hit in the non-parameterized volume named: "Patient/Patient_Y_Division"
+G4WT7 > But this deos not make sense, as this scorer should only get called for hits
+G4WT7 > in a parameterized volume (volume name would include the string "_Division").
+G4WT7 > We think this may sometimes happen because Geant4 navigation gets into a corrupted state.
+G4WT7 > This hit will be omitted from scoring.
+G4WT7 > A note at end of session will show total number of unscored steps and the total unscored energy.
+G4WT7 > In some cases the unscored energy is small enough that you can ignore this issue.
+G4WT7 > This hit's energy deposit would have been: 1.40268e-12 MeV
+G4WT7 > 
+Topas experienced an error in scoring.
+G4WT7 > A scorer in the Component: "Patient"
+G4WT7 > has been called for a hit in the non-parameterized volume named: "Patient/Patient_Y_Division"
+G4WT7 > But this deos not make sense, as this scorer should only get called for hits
+G4WT7 > in a parameterized volume (volume name would include the string "_Division").
+G4WT7 > We think this may sometimes happen because Geant4 navigation gets into a corrupted state.
+G4WT7 > This hit will be omitted from scoring.
+G4WT7 > A note at end of session will show total number of unscored steps and the total unscored energy.
+G4WT7 > In some cases the unscored energy is small enough that you can ignore this issue.
+G4WT7 > This hit's energy deposit would have been: 1.40268e-12 MeV
+G4WT1 > 
+Topas experienced an error in scoring.
+G4WT1 > A scorer in the Component: "Patient"
+G4WT1 > has been called for a hit in the non-parameterized volume named: "Patient/Patient_Y_Division"
+G4WT1 > But this deos not make sense, as this scorer should only get called for hits
+G4WT1 > in a parameterized volume (volume name would include the string "_Division").
+G4WT1 > We think this may sometimes happen because Geant4 navigation gets into a corrupted state.
+G4WT1 > This hit will be omitted from scoring.
+G4WT1 > A note at end of session will show total number of unscored steps and the total unscored energy.
+G4WT1 > In some cases the unscored energy is small enough that you can ignore this issue.
+G4WT1 > This hit's energy deposit would have been: 3.99172e-12 MeV
+G4WT1 > 
+Topas experienced an error in scoring.
+G4WT1 > A scorer in the Component: "Patient"
+G4WT1 > has been called for a hit in the non-parameterized volume named: "Patient/Patient_Y_Division"
+G4WT1 > But this deos not make sense, as this scorer should only get called for hits
+G4WT1 > in a parameterized volume (volume name would include the string "_Division").
+G4WT1 > We think this may sometimes happen because Geant4 navigation gets into a corrupted state.
+G4WT1 > This hit will be omitted from scoring.
+G4WT1 > A note at end of session will show total number of unscored steps and the total unscored energy.
+G4WT1 > In some cases the unscored energy is small enough that you can ignore this issue.
+G4WT1 > This hit's energy deposit would have been: 3.99172e-12 MeV
+G4WT13 > 
+Topas experienced an error in scoring.
+G4WT13 > A scorer in the Component: "Patient"
+G4WT13 > has been called for a hit in the non-parameterized volume named: "Patient/Patient_Y_Division"
+G4WT13 > But this deos not make sense, as this scorer should only get called for hits
+G4WT13 > in a parameterized volume (volume name would include the string "_Division").
+G4WT13 > We think this may sometimes happen because Geant4 navigation gets into a corrupted state.
+G4WT13 > This hit will be omitted from scoring.
+G4WT13 > A note at end of session will show total number of unscored steps and the total unscored energy.
+G4WT13 > In some cases the unscored energy is small enough that you can ignore this issue.
+G4WT13 > This hit's energy deposit would have been: 1.43386e-12 MeV
+G4WT13 > 
+Topas experienced an error in scoring.
+G4WT13 > A scorer in the Component: "Patient"
+G4WT13 > has been called for a hit in the non-parameterized volume named: "Patient/Patient_Y_Division"
+G4WT13 > But this deos not make sense, as this scorer should only get called for hits
+G4WT13 > in a parameterized volume (volume name would include the string "_Division").
+G4WT13 > We think this may sometimes happen because Geant4 navigation gets into a corrupted state.
+G4WT13 > This hit will be omitted from scoring.
+G4WT13 > A note at end of session will show total number of unscored steps and the total unscored energy.
+G4WT13 > In some cases the unscored energy is small enough that you can ignore this issue.
+G4WT13 > This hit's energy deposit would have been: 1.43386e-12 MeV
+G4WT6 > 
+Topas experienced an error in scoring.
+G4WT6 > A scorer in the Component: "Patient"
+G4WT6 > has been called for a hit in the non-parameterized volume named: "Patient/Patient_Y_Division"
+G4WT6 > But this deos not make sense, as this scorer should only get called for hits
+G4WT6 > in a parameterized volume (volume name would include the string "_Division").
+G4WT6 > We think this may sometimes happen because Geant4 navigation gets into a corrupted state.
+G4WT6 > This hit will be omitted from scoring.
+G4WT6 > A note at end of session will show total number of unscored steps and the total unscored energy.
+G4WT6 > In some cases the unscored energy is small enough that you can ignore this issue.
+G4WT6 > This hit's energy deposit would have been: 8.60764e-12 MeV
+G4WT6 > 
+Topas experienced an error in scoring.
+G4WT6 > A scorer in the Component: "Patient"
+G4WT6 > has been called for a hit in the non-parameterized volume named: "Patient/Patient_Y_Division"
+G4WT6 > But this deos not make sense, as this scorer should only get called for hits
+G4WT6 > in a parameterized volume (volume name would include the string "_Division").
+G4WT6 > We think this may sometimes happen because Geant4 navigation gets into a corrupted state.
+G4WT6 > This hit will be omitted from scoring.
+G4WT6 > A note at end of session will show total number of unscored steps and the total unscored energy.
+G4WT6 > In some cases the unscored energy is small enough that you can ignore this issue.
+G4WT6 > This hit's energy deposit would have been: 8.60764e-12 MeV
+G4WT4 > 
+Topas experienced an error in scoring.
+G4WT4 > A scorer in the Component: "Patient"
+G4WT4 > has been called for a hit in the non-parameterized volume named: "Patient/Patient_Y_Division"
+G4WT4 > But this deos not make sense, as this scorer should only get called for hits
+G4WT4 > in a parameterized volume (volume name would include the string "_Division").
+G4WT4 > We think this may sometimes happen because Geant4 navigation gets into a corrupted state.
+G4WT4 > This hit will be omitted from scoring.
+G4WT4 > A note at end of session will show total number of unscored steps and the total unscored energy.
+G4WT4 > In some cases the unscored energy is small enough that you can ignore this issue.
+G4WT4 > This hit's energy deposit would have been: 1.53199e-11 MeV
+G4WT4 > 
+Topas experienced an error in scoring.
+G4WT4 > A scorer in the Component: "Patient"
+G4WT4 > has been called for a hit in the non-parameterized volume named: "Patient/Patient_Y_Division"
+G4WT4 > But this deos not make sense, as this scorer should only get called for hits
+G4WT4 > in a parameterized volume (volume name would include the string "_Division").
+G4WT4 > We think this may sometimes happen because Geant4 navigation gets into a corrupted state.
+G4WT4 > This hit will be omitted from scoring.
+G4WT4 > A note at end of session will show total number of unscored steps and the total unscored energy.
+G4WT4 > In some cases the unscored energy is small enough that you can ignore this issue.
+G4WT4 > This hit's energy deposit would have been: 1.53199e-11 MeV
+G4WT18 > 
+Topas experienced an error in scoring.
+G4WT18 > A scorer in the Component: "Patient"
+G4WT18 > has been called for a hit in the non-parameterized volume named: "Patient/Patient_Y_Division"
+G4WT18 > But this deos not make sense, as this scorer should only get called for hits
+G4WT18 > in a parameterized volume (volume name would include the string "_Division").
+G4WT18 > We think this may sometimes happen because Geant4 navigation gets into a corrupted state.
+G4WT18 > This hit will be omitted from scoring.
+G4WT18 > A note at end of session will show total number of unscored steps and the total unscored energy.
+G4WT18 > In some cases the unscored energy is small enough that you can ignore this issue.
+G4WT18 > This hit's energy deposit would have been: 1.08353e-11 MeV
+G4WT18 > 
+Topas experienced an error in scoring.
+G4WT18 > A scorer in the Component: "Patient"
+G4WT18 > has been called for a hit in the non-parameterized volume named: "Patient/Patient_Y_Division"
+G4WT18 > But this deos not make sense, as this scorer should only get called for hits
+G4WT18 > in a parameterized volume (volume name would include the string "_Division").
+G4WT18 > We think this may sometimes happen because Geant4 navigation gets into a corrupted state.
+G4WT18 > This hit will be omitted from scoring.
+G4WT18 > A note at end of session will show total number of unscored steps and the total unscored energy.
+G4WT18 > In some cases the unscored energy is small enough that you can ignore this issue.
+G4WT18 > This hit's energy deposit would have been: 1.08353e-11 MeV
+G4WT18 > 
+Topas experienced an error in scoring.
+G4WT18 > A scorer in the Component: "Patient"
+G4WT18 > has been called for a hit in the non-parameterized volume named: "Patient/Patient_Y_Division"
+G4WT18 > But this deos not make sense, as this scorer should only get called for hits
+G4WT18 > in a parameterized volume (volume name would include the string "_Division").
+G4WT18 > We think this may sometimes happen because Geant4 navigation gets into a corrupted state.
+G4WT18 > This hit will be omitted from scoring.
+G4WT18 > A note at end of session will show total number of unscored steps and the total unscored energy.
+G4WT18 > In some cases the unscored energy is small enough that you can ignore this issue.
+G4WT18 > This hit's energy deposit would have been: 4.73701e-11 MeV
+G4WT18 > 
+Topas experienced an error in scoring.
+G4WT18 > A scorer in the Component: "Patient"
+G4WT18 > has been called for a hit in the non-parameterized volume named: "Patient/Patient_Y_Division"
+G4WT18 > But this deos not make sense, as this scorer should only get called for hits
+G4WT18 > in a parameterized volume (volume name would include the string "_Division").
+G4WT18 > We think this may sometimes happen because Geant4 navigation gets into a corrupted state.
+G4WT18 > This hit will be omitted from scoring.
+G4WT18 > A note at end of session will show total number of unscored steps and the total unscored energy.
+G4WT18 > In some cases the unscored energy is small enough that you can ignore this issue.
+G4WT18 > This hit's energy deposit would have been: 4.73701e-11 MeV
+G4WT1 > 
+Topas experienced an error in scoring.
+G4WT1 > A scorer in the Component: "Patient"
+G4WT1 > has been called for a hit in the non-parameterized volume named: "Patient/Patient_Y_Division"
+G4WT1 > But this deos not make sense, as this scorer should only get called for hits
+G4WT1 > in a parameterized volume (volume name would include the string "_Division").
+G4WT1 > We think this may sometimes happen because Geant4 navigation gets into a corrupted state.
+G4WT1 > This hit will be omitted from scoring.
+G4WT1 > A note at end of session will show total number of unscored steps and the total unscored energy.
+G4WT1 > In some cases the unscored energy is small enough that you can ignore this issue.
+G4WT1 > This hit's energy deposit would have been: 7.01418e-12 MeV
+G4WT1 > 
+Topas experienced an error in scoring.
+G4WT1 > A scorer in the Component: "Patient"
+G4WT1 > has been called for a hit in the non-parameterized volume named: "Patient/Patient_Y_Division"
+G4WT1 > But this deos not make sense, as this scorer should only get called for hits
+G4WT1 > in a parameterized volume (volume name would include the string "_Division").
+G4WT1 > We think this may sometimes happen because Geant4 navigation gets into a corrupted state.
+G4WT1 > This hit will be omitted from scoring.
+G4WT1 > A note at end of session will show total number of unscored steps and the total unscored energy.
+G4WT1 > In some cases the unscored energy is small enough that you can ignore this issue.
+G4WT1 > This hit's energy deposit would have been: 7.01418e-12 MeV
+G4WT12 > 
+Topas experienced an error in scoring.
+G4WT12 > A scorer in the Component: "Patient"
+G4WT12 > has been called for a hit in the non-parameterized volume named: "Patient/Patient_Y_Division"
+G4WT12 > But this deos not make sense, as this scorer should only get called for hits
+G4WT12 > in a parameterized volume (volume name would include the string "_Division").
+G4WT12 > We think this may sometimes happen because Geant4 navigation gets into a corrupted state.
+G4WT12 > This hit will be omitted from scoring.
+G4WT12 > A note at end of session will show total number of unscored steps and the total unscored energy.
+G4WT12 > In some cases the unscored energy is small enough that you can ignore this issue.
+G4WT12 > This hit's energy deposit would have been: 1.27867e-11 MeV
+G4WT12 > 
+Topas experienced an error in scoring.
+G4WT12 > A scorer in the Component: "Patient"
+G4WT12 > has been called for a hit in the non-parameterized volume named: "Patient/Patient_Y_Division"
+G4WT12 > But this deos not make sense, as this scorer should only get called for hits
+G4WT12 > in a parameterized volume (volume name would include the string "_Division").
+G4WT12 > We think this may sometimes happen because Geant4 navigation gets into a corrupted state.
+G4WT12 > This hit will be omitted from scoring.
+G4WT12 > A note at end of session will show total number of unscored steps and the total unscored energy.
+G4WT12 > In some cases the unscored energy is small enough that you can ignore this issue.
+G4WT12 > This hit's energy deposit would have been: 1.27867e-11 MeV
+G4WT4 > 
+Topas experienced an error in scoring.
+G4WT4 > A scorer in the Component: "Patient"
+G4WT4 > has been called for a hit in the non-parameterized volume named: "Patient/Patient_Y_Division"
+G4WT4 > But this deos not make sense, as this scorer should only get called for hits
+G4WT4 > in a parameterized volume (volume name would include the string "_Division").
+G4WT4 > We think this may sometimes happen because Geant4 navigation gets into a corrupted state.
+G4WT4 > This hit will be omitted from scoring.
+G4WT4 > A note at end of session will show total number of unscored steps and the total unscored energy.
+G4WT4 > In some cases the unscored energy is small enough that you can ignore this issue.
+G4WT4 > This hit's energy deposit would have been: 8.78789e-12 MeV
+G4WT4 > 
+Topas experienced an error in scoring.
+G4WT4 > A scorer in the Component: "Patient"
+G4WT4 > has been called for a hit in the non-parameterized volume named: "Patient/Patient_Y_Division"
+G4WT4 > But this deos not make sense, as this scorer should only get called for hits
+G4WT4 > in a parameterized volume (volume name would include the string "_Division").
+G4WT4 > We think this may sometimes happen because Geant4 navigation gets into a corrupted state.
+G4WT4 > This hit will be omitted from scoring.
+G4WT4 > A note at end of session will show total number of unscored steps and the total unscored energy.
+G4WT4 > In some cases the unscored energy is small enough that you can ignore this issue.
+G4WT4 > This hit's energy deposit would have been: 8.78789e-12 MeV
+G4WT11 > 
+Topas experienced an error in scoring.
+G4WT11 > A scorer in the Component: "Patient"
+G4WT11 > has been called for a hit in the non-parameterized volume named: "Patient/Patient_Y_Division"
+G4WT11 > But this deos not make sense, as this scorer should only get called for hits
+G4WT11 > in a parameterized volume (volume name would include the string "_Division").
+G4WT11 > We think this may sometimes happen because Geant4 navigation gets into a corrupted state.
+G4WT11 > This hit will be omitted from scoring.
+G4WT11 > A note at end of session will show total number of unscored steps and the total unscored energy.
+G4WT11 > In some cases the unscored energy is small enough that you can ignore this issue.
+G4WT11 > This hit's energy deposit would have been: 1.06979e-10 MeV
+G4WT11 > 
+Topas experienced an error in scoring.
+G4WT11 > A scorer in the Component: "Patient"
+G4WT11 > has been called for a hit in the non-parameterized volume named: "Patient/Patient_Y_Division"
+G4WT11 > But this deos not make sense, as this scorer should only get called for hits
+G4WT11 > in a parameterized volume (volume name would include the string "_Division").
+G4WT11 > We think this may sometimes happen because Geant4 navigation gets into a corrupted state.
+G4WT11 > This hit will be omitted from scoring.
+G4WT11 > A note at end of session will show total number of unscored steps and the total unscored energy.
+G4WT11 > In some cases the unscored energy is small enough that you can ignore this issue.
+G4WT11 > This hit's energy deposit would have been: 1.06979e-10 MeV
+G4WT19 > 
+Topas experienced an error in scoring.
+G4WT19 > A scorer in the Component: "Patient"
+G4WT19 > has been called for a hit in the non-parameterized volume named: "Patient/Patient_Y_Division"
+G4WT19 > But this deos not make sense, as this scorer should only get called for hits
+G4WT19 > in a parameterized volume (volume name would include the string "_Division").
+G4WT19 > We think this may sometimes happen because Geant4 navigation gets into a corrupted state.
+G4WT19 > This hit will be omitted from scoring.
+G4WT19 > A note at end of session will show total number of unscored steps and the total unscored energy.
+G4WT19 > In some cases the unscored energy is small enough that you can ignore this issue.
+G4WT19 > This hit's energy deposit would have been: 6.40166e-12 MeV
+G4WT19 > 
+Topas experienced an error in scoring.
+G4WT19 > A scorer in the Component: "Patient"
+G4WT19 > has been called for a hit in the non-parameterized volume named: "Patient/Patient_Y_Division"
+G4WT19 > But this deos not make sense, as this scorer should only get called for hits
+G4WT19 > in a parameterized volume (volume name would include the string "_Division").
+G4WT19 > We think this may sometimes happen because Geant4 navigation gets into a corrupted state.
+G4WT19 > This hit will be omitted from scoring.
+G4WT19 > A note at end of session will show total number of unscored steps and the total unscored energy.
+G4WT19 > In some cases the unscored energy is small enough that you can ignore this issue.
+G4WT19 > This hit's energy deposit would have been: 6.40166e-12 MeV
+G4WT19 > 
+Topas experienced an error in scoring.
+G4WT19 > A scorer in the Component: "Patient"
+G4WT19 > has been called for a hit in the non-parameterized volume named: "Patient/Patient_Y_Division"
+G4WT19 > But this deos not make sense, as this scorer should only get called for hits
+G4WT19 > in a parameterized volume (volume name would include the string "_Division").
+G4WT19 > We think this may sometimes happen because Geant4 navigation gets into a corrupted state.
+G4WT19 > This hit will be omitted from scoring.
+G4WT19 > A note at end of session will show total number of unscored steps and the total unscored energy.
+G4WT19 > In some cases the unscored energy is small enough that you can ignore this issue.
+G4WT19 > This hit's energy deposit would have been: 5.16466e-12 MeV
+G4WT19 > 
+Topas experienced an error in scoring.
+G4WT19 > A scorer in the Component: "Patient"
+G4WT19 > has been called for a hit in the non-parameterized volume named: "Patient/Patient_Y_Division"
+G4WT19 > But this deos not make sense, as this scorer should only get called for hits
+G4WT19 > in a parameterized volume (volume name would include the string "_Division").
+G4WT19 > We think this may sometimes happen because Geant4 navigation gets into a corrupted state.
+G4WT19 > This hit will be omitted from scoring.
+G4WT19 > A note at end of session will show total number of unscored steps and the total unscored energy.
+G4WT19 > In some cases the unscored energy is small enough that you can ignore this issue.
+G4WT19 > This hit's energy deposit would have been: 5.16466e-12 MeV
+G4WT19 > 
+Topas experienced an error in scoring.
+G4WT19 > A scorer in the Component: "Patient"
+G4WT19 > has been called for a hit in the non-parameterized volume named: "Patient/Patient_Y_Division"
+G4WT19 > But this deos not make sense, as this scorer should only get called for hits
+G4WT19 > in a parameterized volume (volume name would include the string "_Division").
+G4WT19 > We think this may sometimes happen because Geant4 navigation gets into a corrupted state.
+G4WT19 > This hit will be omitted from scoring.
+G4WT19 > A note at end of session will show total number of unscored steps and the total unscored energy.
+G4WT19 > In some cases the unscored energy is small enough that you can ignore this issue.
+G4WT19 > This hit's energy deposit would have been: 4.67992e-13 MeV
+G4WT19 > 
+Topas experienced an error in scoring.
+G4WT19 > A scorer in the Component: "Patient"
+G4WT19 > has been called for a hit in the non-parameterized volume named: "Patient/Patient_Y_Division"
+G4WT19 > But this deos not make sense, as this scorer should only get called for hits
+G4WT19 > in a parameterized volume (volume name would include the string "_Division").
+G4WT19 > We think this may sometimes happen because Geant4 navigation gets into a corrupted state.
+G4WT19 > This hit will be omitted from scoring.
+G4WT19 > A note at end of session will show total number of unscored steps and the total unscored energy.
+G4WT19 > In some cases the unscored energy is small enough that you can ignore this issue.
+G4WT19 > This hit's energy deposit would have been: 4.67992e-13 MeV
+G4WT23 > 
+Topas experienced an error in scoring.
+G4WT23 > A scorer in the Component: "Patient"
+G4WT23 > has been called for a hit in the non-parameterized volume named: "Patient/Patient_Y_Division"
+G4WT23 > But this deos not make sense, as this scorer should only get called for hits
+G4WT23 > in a parameterized volume (volume name would include the string "_Division").
+G4WT23 > We think this may sometimes happen because Geant4 navigation gets into a corrupted state.
+G4WT23 > This hit will be omitted from scoring.
+G4WT23 > A note at end of session will show total number of unscored steps and the total unscored energy.
+G4WT23 > In some cases the unscored energy is small enough that you can ignore this issue.
+G4WT23 > This hit's energy deposit would have been: 4.95613e-11 MeV
+G4WT23 > 
+Topas experienced an error in scoring.
+G4WT23 > A scorer in the Component: "Patient"
+G4WT23 > has been called for a hit in the non-parameterized volume named: "Patient/Patient_Y_Division"
+G4WT23 > But this deos not make sense, as this scorer should only get called for hits
+G4WT23 > in a parameterized volume (volume name would include the string "_Division").
+G4WT23 > We think this may sometimes happen because Geant4 navigation gets into a corrupted state.
+G4WT23 > This hit will be omitted from scoring.
+G4WT23 > A note at end of session will show total number of unscored steps and the total unscored energy.
+G4WT23 > In some cases the unscored energy is small enough that you can ignore this issue.
+G4WT23 > This hit's energy deposit would have been: 4.95613e-11 MeV
+G4WT5 > 
+Topas experienced an error in scoring.
+G4WT5 > A scorer in the Component: "Patient"
+G4WT5 > has been called for a hit in the non-parameterized volume named: "Patient/Patient_Y_Division"
+G4WT5 > But this deos not make sense, as this scorer should only get called for hits
+G4WT5 > in a parameterized volume (volume name would include the string "_Division").
+G4WT5 > We think this may sometimes happen because Geant4 navigation gets into a corrupted state.
+G4WT5 > This hit will be omitted from scoring.
+G4WT5 > A note at end of session will show total number of unscored steps and the total unscored energy.
+G4WT5 > In some cases the unscored energy is small enough that you can ignore this issue.
+G4WT5 > This hit's energy deposit would have been: 1.78523e-12 MeV
+G4WT5 > 
+Topas experienced an error in scoring.
+G4WT5 > A scorer in the Component: "Patient"
+G4WT5 > has been called for a hit in the non-parameterized volume named: "Patient/Patient_Y_Division"
+G4WT5 > But this deos not make sense, as this scorer should only get called for hits
+G4WT5 > in a parameterized volume (volume name would include the string "_Division").
+G4WT5 > We think this may sometimes happen because Geant4 navigation gets into a corrupted state.
+G4WT5 > This hit will be omitted from scoring.
+G4WT5 > A note at end of session will show total number of unscored steps and the total unscored energy.
+G4WT5 > In some cases the unscored energy is small enough that you can ignore this issue.
+G4WT5 > This hit's energy deposit would have been: 1.78523e-12 MeV
+G4WT5 > 
+Topas experienced an error in scoring.
+G4WT5 > A scorer in the Component: "Patient"
+G4WT5 > has been called for a hit in the non-parameterized volume named: "Patient/Patient_Y_Division"
+G4WT5 > But this deos not make sense, as this scorer should only get called for hits
+G4WT5 > in a parameterized volume (volume name would include the string "_Division").
+G4WT5 > We think this may sometimes happen because Geant4 navigation gets into a corrupted state.
+G4WT5 > This hit will be omitted from scoring.
+G4WT5 > A note at end of session will show total number of unscored steps and the total unscored energy.
+G4WT5 > In some cases the unscored energy is small enough that you can ignore this issue.
+G4WT5 > This hit's energy deposit would have been: 2.20933e-11 MeV
+G4WT5 > 
+Topas experienced an error in scoring.
+G4WT5 > A scorer in the Component: "Patient"
+G4WT5 > has been called for a hit in the non-parameterized volume named: "Patient/Patient_Y_Division"
+G4WT5 > But this deos not make sense, as this scorer should only get called for hits
+G4WT5 > in a parameterized volume (volume name would include the string "_Division").
+G4WT5 > We think this may sometimes happen because Geant4 navigation gets into a corrupted state.
+G4WT5 > This hit will be omitted from scoring.
+G4WT5 > A note at end of session will show total number of unscored steps and the total unscored energy.
+G4WT5 > In some cases the unscored energy is small enough that you can ignore this issue.
+G4WT5 > This hit's energy deposit would have been: 2.20933e-11 MeV
+G4WT1 > 
+Topas experienced an error in scoring.
+G4WT1 > A scorer in the Component: "Patient"
+G4WT1 > has been called for a hit in the non-parameterized volume named: "Patient/Patient_Y_Division"
+G4WT1 > But this deos not make sense, as this scorer should only get called for hits
+G4WT1 > in a parameterized volume (volume name would include the string "_Division").
+G4WT1 > We think this may sometimes happen because Geant4 navigation gets into a corrupted state.
+G4WT1 > This hit will be omitted from scoring.
+G4WT1 > A note at end of session will show total number of unscored steps and the total unscored energy.
+G4WT1 > In some cases the unscored energy is small enough that you can ignore this issue.
+G4WT1 > This hit's energy deposit would have been: 7.30105e-11 MeV
+G4WT1 > 
+Topas experienced an error in scoring.
+G4WT1 > A scorer in the Component: "Patient"
+G4WT1 > has been called for a hit in the non-parameterized volume named: "Patient/Patient_Y_Division"
+G4WT1 > But this deos not make sense, as this scorer should only get called for hits
+G4WT1 > in a parameterized volume (volume name would include the string "_Division").
+G4WT1 > We think this may sometimes happen because Geant4 navigation gets into a corrupted state.
+G4WT1 > This hit will be omitted from scoring.
+G4WT1 > A note at end of session will show total number of unscored steps and the total unscored energy.
+G4WT1 > In some cases the unscored energy is small enough that you can ignore this issue.
+G4WT1 > This hit's energy deposit would have been: 7.30105e-11 MeV
+G4WT21 > 
+Topas experienced an error in scoring.
+G4WT21 > A scorer in the Component: "Patient"
+G4WT21 > has been called for a hit in the non-parameterized volume named: "Patient/Patient_Y_Division"
+G4WT21 > But this deos not make sense, as this scorer should only get called for hits
+G4WT21 > in a parameterized volume (volume name would include the string "_Division").
+G4WT21 > We think this may sometimes happen because Geant4 navigation gets into a corrupted state.
+G4WT21 > This hit will be omitted from scoring.
+G4WT21 > A note at end of session will show total number of unscored steps and the total unscored energy.
+G4WT21 > In some cases the unscored energy is small enough that you can ignore this issue.
+G4WT21 > This hit's energy deposit would have been: 1.37046e-09 MeV
+G4WT21 > 
+Topas experienced an error in scoring.
+G4WT21 > A scorer in the Component: "Patient"
+G4WT21 > has been called for a hit in the non-parameterized volume named: "Patient/Patient_Y_Division"
+G4WT21 > But this deos not make sense, as this scorer should only get called for hits
+G4WT21 > in a parameterized volume (volume name would include the string "_Division").
+G4WT21 > We think this may sometimes happen because Geant4 navigation gets into a corrupted state.
+G4WT21 > This hit will be omitted from scoring.
+G4WT21 > A note at end of session will show total number of unscored steps and the total unscored energy.
+G4WT21 > In some cases the unscored energy is small enough that you can ignore this issue.
+G4WT21 > This hit's energy deposit would have been: 1.37046e-09 MeV
+G4WT18 > 
+Topas experienced an error in scoring.
+G4WT18 > A scorer in the Component: "Patient"
+G4WT18 > has been called for a hit in the non-parameterized volume named: "Patient/Patient_Y_Division"
+G4WT18 > But this deos not make sense, as this scorer should only get called for hits
+G4WT18 > in a parameterized volume (volume name would include the string "_Division").
+G4WT18 > We think this may sometimes happen because Geant4 navigation gets into a corrupted state.
+G4WT18 > This hit will be omitted from scoring.
+G4WT18 > A note at end of session will show total number of unscored steps and the total unscored energy.
+G4WT18 > In some cases the unscored energy is small enough that you can ignore this issue.
+G4WT18 > This hit's energy deposit would have been: 9.43899e-12 MeV
+G4WT18 > 
+Topas experienced an error in scoring.
+G4WT18 > A scorer in the Component: "Patient"
+G4WT18 > has been called for a hit in the non-parameterized volume named: "Patient/Patient_Y_Division"
+G4WT18 > But this deos not make sense, as this scorer should only get called for hits
+G4WT18 > in a parameterized volume (volume name would include the string "_Division").
+G4WT18 > We think this may sometimes happen because Geant4 navigation gets into a corrupted state.
+G4WT18 > This hit will be omitted from scoring.
+G4WT18 > A note at end of session will show total number of unscored steps and the total unscored energy.
+G4WT18 > In some cases the unscored energy is small enough that you can ignore this issue.
+G4WT18 > This hit's energy deposit would have been: 9.43899e-12 MeV
+
+Note that TOPAS omitted scoring one or more hits during this session because
+Geant4 navigation seemed to be at the wrong level of the parameterization for this scorer.
+The total number of affected hits was: 56
+The total energy of affected hits was: 3.85201e-09 MeV
+For details on each unscored hit, see the console log for lines starting with:
+"Topas experienced a potentially serious error in scoring"
+If you have only a small number of unscored hits, there is generally no cause for alarm.
+If you have a large number of unscored hits, this may be due to a problem in Geant4 navigation.
+You can set TOPAS to limit the number of messages about this parameterization error by setting
+the parameter Ts/ParameterizationErrorMaxReports
+You can set TOPAS to exit if it exceeds a given number of unscored hits by setting
+the parameter Ts/ParameterizationErrorMaxCount
+You can set TOPAS to exit if it exceeds a given total energy from unscored hits by setting
+the parameter Ts/ParameterizationErrorMaxEnergy
