@@ -23,7 +23,7 @@ load BOXPHANTOM.mat
 % meta information for treatment plan
 pln.radiationMode   = 'protons';     % either photons / protons / carbon
 
-pln.machine          = 'Generic';
+pln.machine          = 'MIT_P_doubleGauss';
 %pln.machine          = 'generic_MCsquare';
 
 
@@ -32,8 +32,8 @@ pln.numOfFractions  = 1;
 % beam geometry settings
 pln.propStf.bixelWidth              = 10; % [mm] / also corresponds to lateral spot spacing for particles
 pln.propStf.longitudinalSpotSpacing = 10;
-pln.propStf.gantryAngles            = 0; % [?] 
-pln.propStf.couchAngles             = 0; % [?]
+pln.propStf.gantryAngles            = [90 270]; % [?] 
+pln.propStf.couchAngles             = [0 0]; % [?]
 pln.propStf.numOfBeams              = numel(pln.propStf.gantryAngles);
 pln.propStf.isoCenter               = ones(pln.propStf.numOfBeams,1) * matRad_getIsoCenter(cst,ct,0);
 %pln.propStf.isoCenter              = [51 0 51];
@@ -56,8 +56,8 @@ pln.propOpt.bioOptimization = 'none'; % none: physical optimization;            
 pln.propOpt.runDAO          = false;  % 1/true: run DAO, 0/false: don't / will be ignored for particles
 pln.propOpt.runSequencing   = false;  % 1/true: run sequencing, 0/false: don't / will be ignored for particles and also triggered by runDAO below
 
-%pln.propMC.proton_engine    = 'TOPAS'; %Requires separate topas installation
-pln.propMC.proton_engine    = 'MCsquare';
+pln.propMC.proton_engine    = 'TOPAS'; %Requires separate topas installation
+% pln.propMC.proton_engine    = 'MCsquare';
 
 %Enable LET calculation - Does not work yet for MCsquare data
 pln.propDoseCalc.calcLET    = false;
