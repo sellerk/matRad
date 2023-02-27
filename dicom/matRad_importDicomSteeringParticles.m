@@ -42,7 +42,7 @@ dlgBaseDataText = ['Import steering information from DICOM Plan.','Choose corres
 if ~ispc
     uiwait(helpdlg(dlgBaseDataText,['DICOM import - ', pln.radiationMode, ' base data' ]));
 end
-[fileName,pathName] = uigetfile([MatRad_Config.matRadRoot, '\basedata\protons_MIT_P_doubleGauss.mat'], dlgBaseDataText);
+[fileName,pathName] = uigetfile(['C:\Users\Matth\OneDrive\_Promotion\BaseData_BackUp', '\protons_MIT_P_doubleGauss.mat'], dlgBaseDataText);
 load([pathName filesep fileName]);
 
 ix = find(fileName == '_');
@@ -283,7 +283,7 @@ for i = 1:length(BeamSeqNames)
             % changed energy difference to also work for old Ariaplans (VeF
             % / KiB Data)
 %             focusIxTemp = find(abs([machine.data(energyIxTemp).initFocus.SisFWHMAtIso] - focusFWHM )< 10^-2);
-            focusIxTemp = find(abs([machine.data(energyIxTemp).initFocus.SisFWHMAtIso] - focusFWHM )< 10^0);
+            focusIxTemp = find(abs([machine.data(energyIxTemp).initFocus.SisFWHMAtIso] - focusFWHM )< 5);
             stf(i).ray(j).focusIx(k) = focusIxTemp;
             stf(i).ray(j).focusFWHM(k) = machine.data(energyIxTemp).initFocus.SisFWHMAtIso(stf(i).ray(j).focusIx(k));
         end
