@@ -98,15 +98,15 @@ for beamcounter = 1 : size(stf,2)
     [PBP_help(beamcounter).Energies, ia]= unique(PBP_data{1,beamcounter}(:,4));
     PBP_help(beamcounter).foci = PBP_data{1,beamcounter}(ia,5);
     for IESloop = 1 : numel(PBP_help(beamcounter).Energies)
-        PBP.IES(IESloop).energy =  PBP_help(beamcounter).Energies(IESloop);
-        PBP.IES(IESloop).focus =   PBP_help(beamcounter).foci(IESloop);
-        PBP.IES(IESloop).data{:,1} = PBP_data{1,beamcounter}((PBP_data{1,beamcounter}(:,4) ==  PBP_help(beamcounter).Energies(IESloop)),1); % X-Position
-        PBP.IES(IESloop).data{:,2} = PBP_data{1,beamcounter}((PBP_data{1,beamcounter}(:,4) ==  PBP_help(beamcounter).Energies(IESloop)),2); % Y-Position
-        PBP.IES(IESloop).data{:,3} = PBP_data{1,beamcounter}((PBP_data{1,beamcounter}(:,4) ==  PBP_help(beamcounter).Energies(IESloop)),3); % beamweight
+        PBP(beamcounter).IES(IESloop).energy =  PBP_help(beamcounter).Energies(IESloop);
+        PBP(beamcounter).IES(IESloop).focus =   PBP_help(beamcounter).foci(IESloop);
+        PBP(beamcounter).IES(IESloop).data{:,1} = PBP_data{1,beamcounter}((PBP_data{1,beamcounter}(:,4) ==  PBP_help(beamcounter).Energies(IESloop)),1); % X-Position
+        PBP(beamcounter).IES(IESloop).data{:,2} = PBP_data{1,beamcounter}((PBP_data{1,beamcounter}(:,4) ==  PBP_help(beamcounter).Energies(IESloop)),2); % Y-Position
+        PBP(beamcounter).IES(IESloop).data{:,3} = PBP_data{1,beamcounter}((PBP_data{1,beamcounter}(:,4) ==  PBP_help(beamcounter).Energies(IESloop)),3); % beamweight
         PBP_help(beamcounter).PBP_x{IESloop}(:,1) = PBP_data{1,beamcounter}((PBP_data{1,beamcounter}(:,4) ==  PBP_help(beamcounter).Energies(IESloop)),1);
         PBP_help(beamcounter).PBP_y{IESloop}(:,1) = PBP_data{1,beamcounter}((PBP_data{1,beamcounter}(:,4) ==  PBP_help(beamcounter).Energies(IESloop)),2);
         PBP_help(beamcounter).PBP_partcount{IESloop}(:,1) = PBP_data{1,beamcounter}((PBP_data{1,beamcounter}(:,4) ==  PBP_help(beamcounter).Energies(IESloop)),3);
-        PBP.IES(IESloop).data =  cell2mat(PBP.IES(IESloop).data);
+        PBP(beamcounter).IES(IESloop).data =  cell2mat(PBP(beamcounter).IES(IESloop).data);
     end
     PBP_help(beamcounter).NumIES = IESloop;
     %% weight applied to each voxel to adapt number of particles used for simulation
@@ -114,7 +114,7 @@ for beamcounter = 1 : size(stf,2)
     %% calculation of beamspread
     Erange = [115,  115.8, 121.6,   122.3, 126.0, 131.5, 136.9,  137.4,  138.0, 138.6, 186.8, 187.3, 188.7, 209.2, 209.8, 217.4, 219.5, 219.9];
     Spread = [0.001,  0.1,   0.125,   0.15,  0.2,   0.5,   0.75,   0.77,   0.7,   0.8,   1.,   0.95,   0.9,   0.85,  0.9,   0.95,  1.,    1.1];
-    beamspread = interp1(Erange,Spread,PBP_help.Energies, 'nearest', 'extrap');
+    beamspread = interp1(Erange,Spread,PBP_help(beamcounter).Energies, 'nearest', 'extrap');
     %% Calculation of Iso
     % Bestimmung der Mitte des CTs   
     Snout = 1119;
@@ -122,7 +122,7 @@ for beamcounter = 1 : size(stf,2)
     IsoCTY = size(ct.y,2)/2+ct.y(1); 
     IsoCTZ = size(ct.z,2)/2+ct.z(1);
     IsoCT= [IsoCTX, IsoCTY, IsoCTZ];
-    IsoBeam = (stf.isoCenter + ct.dicomMeta.ImagePositionPatient')-1;
+    IsoBeam = (stf(beamcounter).isoCenter + ct.dicomMeta.ImagePositionPatient')-1;
     Iso = IsoBeam - IsoCT;
     finalIsoX = Iso(2);
     finalIsoY = Iso(3)*-1;
@@ -131,9 +131,9 @@ for beamcounter = 1 : size(stf,2)
 %     RotationX = -90;
 %     RotationY = 0;
 %     RotationZ = 90;
-    a = deg2rad(mod(stf.gantryAngle,360));
+    a = deg2rad(mod(stf(beamcounter).gantryAngle,360));
     g = a;
-    t = deg2rad(mod(stf.couchAngle,360));
+    t = deg2rad(mod(stf(beamcounter).couchAngle,360));
     RotationX = (-round(rad2deg(atan(sin(t)*tan(g)+tan(a)*cos(t)/cos(g))),2));
     RotationY = (round(rad2deg((asin(sin(g)*cos(a)*cos(t)+sin(a)*sin(t)))),2));
     RotationZ = (round(rad2deg(atan(sin(a)*tan(g)+tan(t)*cos(a)/cos(g))),2));
@@ -147,7 +147,7 @@ for beamcounter = 1 : size(stf,2)
     
     %% export 
     if exportbool
-                print_times_point = [sprintf('%.d ', PBP_help.NumVoxel), sprintf('%.d ', (1:PBP_help.NumVoxel))];
+                print_times_point = [sprintf('%.d ', PBP_help(beamcounter).NumVoxel), sprintf('%.d ', (1:PBP_help(beamcounter).NumVoxel))];
                 print_times_beams = [sprintf('%.d ',ones(size(stf,2))), sprintf('%.d',ones(size(stf,2)).*PBP_help(beamcounter).NumVoxel), ' s', newline];
                 print_physics = [...
                     '#============================================================================##', newline ...
@@ -160,17 +160,17 @@ for beamcounter = 1 : size(stf,2)
                     '--- Sequential Time Mode', newline ...
                     '#============================================================================#', newline, newline ...
                     's:Tf/Energies/Function  = "Step"', newline ...
-                    'dv:Tf/Energies/Times    = ', sprintf('%.d ',size(PBP_help.Energies,1)), sprintf('%.d ',cumsum(cell2mat(cellfun(@numel, PBP_help(1).PBP_x, 'UniformOutput', false)))), 's', newline ...
-                    'dv:Tf/Energies/Values   = ', sprintf('%.d ',size(PBP_help.Energies,1)), sprintf('%.12g ', PBP_help.Energies'.*1.0072765), 'MeV', newline];
+                    'dv:Tf/Energies/Times    = ', sprintf('%.d ',size(PBP_help(beamcounter).Energies,1)), sprintf('%.d ',cumsum(cell2mat(cellfun(@numel, PBP_help(1).PBP_x, 'UniformOutput', false)))), 's', newline ...
+                    'dv:Tf/Energies/Values   = ', sprintf('%.d ',size(PBP_help(beamcounter).Energies,1)), sprintf('%.12g ', PBP_help(beamcounter).Energies'.*1.0072765), 'MeV', newline];
                 print_particles = ['s:Tf/Particles/Function = "Step"', newline ...
                     'dv:Tf/Particles/Times   = ', print_times_point, 's', newline ...
-                    'iv:Tf/Particles/Values  = ', sprintf('%.d ',PBP_help.NumVoxel), sprintf('%.f ', round(vertcat(PBP_help(beamcounter).PBP_partcount{1,:})'.*MC_scaling,0)), newline];
+                    'iv:Tf/Particles/Values  = ', sprintf('%.d ',PBP_help(beamcounter).NumVoxel), sprintf('%.f ', round(vertcat(PBP_help(beamcounter).PBP_partcount{1,:})'.*MC_scaling,0)), newline];
                 print_positionsX = ['s:Tf/PositionsX/Function = "Step"', newline ...
                     'dv:Tf/PositionsX/Times   = ', print_times_point, 's', newline ...
-                    'dv:Tf/PositionsX/Values  = ', sprintf('%.d ',PBP_help.NumVoxel),  sprintf('%.12g ',vertcat(PBP_help(beamcounter).PBP_y{1,:})'*-1), 'mm', newline]; 
+                    'dv:Tf/PositionsX/Values  = ', sprintf('%.d ',PBP_help(beamcounter).NumVoxel),  sprintf('%.12g ',vertcat(PBP_help(beamcounter).PBP_y{1,:})'*-1), 'mm', newline]; 
                 print_positionsY = ['s:Tf/PositionsY/Function = "Step"', newline ...
                     'dv:Tf/PositionsY/Times   = ', print_times_point, 's', newline ...
-                    'dv:Tf/PositionsY/Values  = ', sprintf('%.d ',PBP_help.NumVoxel), sprintf('%.12g ',vertcat(PBP_help(beamcounter).PBP_x{1,:})'*-1), 'mm', newline]; 
+                    'dv:Tf/PositionsY/Values  = ', sprintf('%.d ',PBP_help(beamcounter).NumVoxel), sprintf('%.12g ',vertcat(PBP_help(beamcounter).PBP_x{1,:})'*-1), 'mm', newline]; 
                 print_RotationX = ['s:Tf/RotationX/Function = "Step"', newline ...
                     'dv:Tf/RotationX/Times   = ', print_times_beams ...
                     'dv:Tf/RotationX/Values  = ', sprintf('%.d ',ones(size(stf,2))), sprintf('%.f ',RotationX), 'deg', newline];
@@ -190,11 +190,11 @@ for beamcounter = 1 : size(stf,2)
                     'dv:Tf/IsoZ/Times   = ', print_times_beams ...
                     'dv:Tf/IsoZ/Values  = ', sprintf('%.d ',ones(size(stf,2))), sprintf('%.f ',finalIsoZ), 'mm', newline];
                 print_spread = ['s:Tf/Spread/Function  = "Step"', newline ...
-                    'dv:Tf/Spread/Times    = ', sprintf('%.d ',size(PBP_help.Energies,1)), sprintf('%.d ',cumsum(cell2mat(cellfun(@numel, PBP_help(1).PBP_x, 'UniformOutput', false)))), 's', newline ...
-                    'dv:Tf/Spread/Values   = ', sprintf('%.d ',size(PBP_help.Energies,1)), sprintf('%.5g ',beamspread'), 'mm', newline];
+                    'dv:Tf/Spread/Times    = ', sprintf('%.d ',size(PBP_help(beamcounter).Energies,1)), sprintf('%.d ',cumsum(cell2mat(cellfun(@numel, PBP_help(1).PBP_x, 'UniformOutput', false)))), 's', newline ...
+                    'dv:Tf/Spread/Values   = ', sprintf('%.d ',size(PBP_help(beamcounter).Energies,1)), sprintf('%.5g ',beamspread'), 'mm', newline];
                 print_time = ['d:Tf/TimelineStart  = 0.0 s', newline ...
-                    'd:Tf/TimelineEnd    = ', sprintf('%.d ',PBP_help.NumVoxel), 's', newline ...
-                    'i:Tf/NumberOfSequentialTimes = ', sprintf('%.d ',PBP_help.NumVoxel), newline, newline];
+                    'd:Tf/TimelineEnd    = ', sprintf('%.d ',PBP_help(beamcounter).NumVoxel), 's', newline ...
+                    'i:Tf/NumberOfSequentialTimes = ', sprintf('%.d ',PBP_help(beamcounter).NumVoxel), newline, newline];
                
                 print_materials = [...
                     '#============================================================================##', newline ...
@@ -317,12 +317,12 @@ for beamcounter = 1 : size(stf,2)
                     'b:Ge/CheckForOverlaps = "t"', newline ...
                     'b:Ge/CheckForUnusedComponents = "f"  ', newline ];
 
-                fid_PBP = fopen([exportpath filesep exportname, '.topasinp'], 'w');
+                fid_PBP = fopen([exportpath filesep exportname, '_', num2str(beamcounter), '.topasinp'], 'w');
                 fprintf(fid_PBP,[print_physics, print_energies, print_particles, print_positionsX,print_positionsY, print_RotationX, print_RotationY,print_RotationZ, print_ISOX, print_ISOY, print_ISOZ, print_spread, print_time, print_materials, print_assign_particle, print_geometries, print_scoring]);
                 fclose(fid_PBP);
                 
 end
-PBP(beamcounter).Allpoints = cell2mat(PBP_data);
+PBP(beamcounter).Allpoints = cell2mat(PBP_data(beamcounter));
 
 end
 

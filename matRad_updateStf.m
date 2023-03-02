@@ -22,7 +22,7 @@ catch
    matRad_cfg.dispError('Could not find the following machine file: %s',fileName); 
 end
 
-for i  = size(stf,1)
+for i  = size(stf,2)
     for j = stf(i).numOfRays:-1:1
         
         [~, vEnergyIx] = min(abs(bsxfun(@minus,[machine.data.energy]',...
