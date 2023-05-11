@@ -1,0 +1,14 @@
+# TOPAS Version: 3.8.p1
+# Parameter File: matRad_plan_field1_run1.txt
+# Results for scorer: Patient/Tally_DoseToMedium
+# Scored in component: Patient
+# Warning: Some steps were not scored due to touchable returning an invalid index number.
+# See console log for messages starting with: Topas experienced a potentially serious error in scoring.
+# We believe this error is due to an unsolved bug in Geant4 parallel world handling.
+# Total number of steps not scored for this reason: 11
+# Total amount of energy not scored for this reason: 4.85298e-09 MeV
+# X in 100 bins of 0.3 cm
+# Y in 100 bins of 0.3 cm
+# Z in 30 bins of 0.3 cm
+# DoseToMedium ( Gy ) : Sum   
+# Binary file: score_matRad_plan_field1_run1_physicalDose_43.bin

@@ -48,6 +48,7 @@ dose.internalName = currDose{12};
 dose.resolution.x = doseInfo.PixelSpacing(1);
 dose.resolution.y = doseInfo.PixelSpacing(2);
 dose.resolution.z = doseInfo.SliceThickness;
+% dose.resolution.z = 2; % temp MaW
 
 % target resolution is ct.resolution
 target_resolution = ct.resolution;
@@ -91,8 +92,10 @@ dose.dicomInfo.ImagePositionPatient    = [min(dose.x); min(dose.y); min(dose.z)]
 dose.dicomInfo.SliceThickness          = target_resolution.z;
 dose.dicomInfo.ImageOrientationPatient = doseInfo.ImageOrientationPatient;
 dose.dicomInfo.DoseType                = doseInfo.DoseType;
+% dose.dicomInfo.DoseType                = 'Topas'; % temp MaW
 dose.dicomInfo.DoseSummationType       = doseInfo.DoseSummationType;
-%dose.dicomInfo.InstanceNumber          = doseInfo.InstanceNumber; %Not
+% dose.dicomInfo.DoseSummationType       = 'PLAN';
+% dose.dicomInfo.InstanceNumber          = doseInfo.InstanceNumber; %Not
 %always given
 dose.dicomInfo.SOPClassUID             = doseInfo.SOPClassUID;
 dose.dicomInfo.SOPInstanceUID          = doseInfo.SOPInstanceUID;

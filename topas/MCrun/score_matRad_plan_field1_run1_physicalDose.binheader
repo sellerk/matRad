@@ -6,9 +6,9 @@
 # See console log for messages starting with: Topas experienced a potentially serious error in scoring.
 # We believe this error is due to an unsolved bug in Geant4 parallel world handling.
 # Total number of steps not scored for this reason: 20
-# Total amount of energy not scored for this reason: 1.23029e-09 MeV
-# X in 96 bins of 0.5 cm
-# Y in 96 bins of 0.5 cm
-# Z in 96 bins of 0.5 cm
+# Total amount of energy not scored for this reason: 8.17755e-09 MeV
+# X in 100 bins of 0.3 cm
+# Y in 100 bins of 0.3 cm
+# Z in 30 bins of 0.3 cm
 # DoseToMedium ( Gy ) : Sum   
 # Binary file: score_matRad_plan_field1_run1_physicalDose.bin

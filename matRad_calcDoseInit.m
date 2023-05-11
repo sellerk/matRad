@@ -99,6 +99,7 @@ dij.beamNum  = NaN*ones(numOfColumnsDij,1);
 % Allocate space for dij.physicalDose sparse matrix
 for i = 1:dij.numOfScenarios
     dij.physicalDose{i} = spalloc(dij.doseGrid.numOfVoxels,numOfColumnsDij,1);
+%     dij.physicalDose = spalloc(dij.doseGrid.numOfVoxels,numOfColumnsDij,1); 
 end
 
 % Allocate memory for dose_temp cell array

@@ -1,0 +1,25 @@
+##################
+# Graphic
+##################
+
+b:Gr/Enable = "t"
+s:Gr/ViewB/Type = "OpenGL"
+i:Gr/ViewB/WindowSizeX = 900
+i:Gr/ViewB/WindowSizeY = 900
+d:Gr/ViewB/Theta = 45 deg
+d:Gr/ViewB/Phi = 45 deg
+s:Gr/ViewB/Projection = "Perspective"
+d:Gr/ViewB/PerspectiveAngle = 0 deg
+u:Gr/ViewB/Zoom = 2
+b:Gr/ViewB/HiddenLineRemovalForTrajectories = "True"
+u:Gr/ViewB/TransX = 0
+u:Gr/ViewB/TransY = 0
+b:Gr/ViewB/IncludeTrajectories = "True" 
+b:Gr/ViewB/IncludeAxes = "True" # defaults to "False"
+s:Gr/ViewB/AxesComponent = "World" # Component in which to center the axes.˓→Defaults to World.
+d:Gr/ViewB/AxesSize = 50 cm # size of axes
+i:Gr/ShowOnlyOutlineIfVoxelCountExceeds = 50000000
+#iv:Ge/Patient/ShowSpecificSlicesX = 1 -2            
+#iv:Ge/Patient/ShowSpecificSlicesY = 1 -2            
+iv:Ge/Patient/ShowSpecificSlicesZ = 1 -1  
+ts/UseQt = "t"

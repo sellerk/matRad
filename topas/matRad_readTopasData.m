@@ -1,10 +1,16 @@
-function [topasCube] = matRad_readTopasData(folder)
+function [topasCube] = matRad_readTopasData(folder, filename)
 %UNTITLED2 Summary of this function goes here
 %   Detailed explanation goes here
-load([folder filesep 'MCparam.mat']);
+if nargin < 2
+    load([folder filesep 'MCparam.mat']);
+else
+    load(fullfile(folder, filename))
+end
 
 %Normalize with histories and particles/weight
 correctionFactor = 1e6 / double(MCparam.nbHistoriesTotal); %double(MCparam.nbParticlesTotal) / double(MCparam.nbHistoriesTotal);
+% correctionFactor = double(MCparam.nbParticlesTotal) / double(MCparam.nbHistoriesTotal);
+% correctionFactor = 1;
 
 cubeDim = MCparam.imageCubeDim;
 
@@ -15,7 +21,8 @@ for t = 1:length(MCparam.tallies)
     for f = 1:MCparam.nbFields
         topasSum = zeros(cubeDim(1),cubeDim(2),cubeDim(3));
         for k = 1:MCparam.nbRuns
-            genFileName = sprintf('score_%s_field%d_run%d_%s',MCparam.simLabel,f,k,tname);
+            genFileName = sprintf('score_%s_field%d_run%d_%s%s',MCparam.simLabel,f,k,tname,MCparam.Loopcounter);
+%             genFileName = sprintf('score_%s_%s',MCparam.simLabel, tname); % MaW temp change 100 runs
             switch MCparam.outputType
                 case 'csv'
                     genFullFile = fullfile(folder,[genFileName '.csv']);

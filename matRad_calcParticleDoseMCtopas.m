@@ -122,18 +122,20 @@ topasBaseData = MatRad_TopasBaseData(machine,stf);%,TopasConfig);
 
 %Collect weights
 w = zeros(sum([stf(:).totalNumOfBixels]),1);
-ct = 1;
+counter = 1;
 for i = 1:length(stf)
     for j = 1:stf(i).numOfRays
         rayBix = stf(i).numOfBixelsPerRay(j);
-        w(ct:ct+rayBix-1) = stf(i).ray(j).weight;
-        ct = ct + rayBix;
+        w(counter:counter+rayBix-1) = stf(i).ray(j).weight;
+        counter = counter + rayBix;
     end
 end
 
 topasConfig.numHistories = nCasePerBixel;
-topasConfig.numOfRuns = matRad_cfg.propMC.topas_defaultNumBatches;
+% topasConfig.numOfRuns = matRad_cfg.propMC.topas_defaultNumBatches;
+topasConfig.numOfRuns = 1;
 topasConfig.writeAllFiles(ctResampled,pln,stf,topasBaseData,w);
+% topasConfig.writeAllFiles(ct,pln,stf,topasBaseData,w); temp MaW
 
 %topasConfig.parallelRuns = true;
 %topasConfig.numThreads = 20 / topasConfig.numOfRuns;
@@ -181,3 +183,4 @@ dij.MC_tallies = fnames;
 for f = 1:numel(fnames)
     dij.(fnames{f}){1} = topasCubes.(fnames{f});    
 end
+
