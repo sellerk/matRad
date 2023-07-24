@@ -169,7 +169,6 @@ classdef MatRad_TopasConfig < handle
            
            fprintf(fID,'s:Sim/PlanLabel = "%s"\n',obj.label);
            fprintf(fID,'s:Sim/ScoreLabel = "score_%s_field%d_run%d"\n',obj.label,fieldIx,runIx);           
-%            fprintf(fID,'s:Sim/ScoreLabel = "score_%s"\n',obj.label); % temp change MaW for 100 runs
            fprintf(fID,'\n');
            
            logicalString = {'"False"', '"True"'};
@@ -289,7 +288,6 @@ classdef MatRad_TopasConfig < handle
             switch obj.modeHistories
                 case 'num'
                     obj.fracHistories = obj.numHistories ./sum(nParticlesTotalBixel);  
-%                     obj.fracHistories = obj.numHistories ./ min(nParticlesTotalBixel); % temp change MaW
                 case 'frac'
                     obj.numHistories = sum(nParticlesTotalBixel);
                 otherwise
@@ -467,7 +465,6 @@ classdef MatRad_TopasConfig < handle
                 dataTOPAS = dataTOPAS(ixSorted);
                 %write TOPAS data base file
                 fieldSetupFileName = sprintf('beamSetup_%s_field%d.txt',obj.label,beamIx);
-%                 fieldSetupFileName = sprintf('beamSetup_%s.txt',obj.label); % MaW temp change for 100 files
                 fileID = fopen(fullfile(obj.workingDir,fieldSetupFileName),'w');
                 obj.writeFieldHeader(fileID,beamIx);                
                 
@@ -645,7 +642,6 @@ classdef MatRad_TopasConfig < handle
                 %write run scripts for TOPAS
                 for runIx = 1:obj.numOfRuns
                     runFileName = sprintf('%s_field%d_run%d.txt',obj.label,beamIx,runIx);
-%                     runFileName = sprintf('%s.txt',obj.label); % MaW temp change to generate 100 runfiles
                     fileID = fopen(fullfile(obj.workingDir,runFileName),'w');
                     obj.writeRunHeader(fileID,beamIx,runIx);
                     fprintf(fileID,['i:Ts/Seed = ',num2str(runIx),'\n']);
@@ -925,7 +921,6 @@ classdef MatRad_TopasConfig < handle
               
             MCparam = obj.MCparam;            
             save(fullfile(obj.workingDir,'MCparam.mat'),'MCparam','-v7');
-%             save(fullfile(obj.workingDir,['MCparam_', obj.label, '.mat']),'MCparam','-v7'); % temp MaW for 100 runs
         end
         
     end
