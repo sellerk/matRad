@@ -153,7 +153,10 @@ if isfield(pln.propOpt, 'lungModulation') && pln.propOpt.lungModulation
     % modulation cube with properties of ct      
     modulation = ct;
     modulation.numOfCtScen = 2;
+    % cube{2} = all voxels inside lung with its final SPR assigned all
+    % other voxels = 0
     modulation.cube(2) = {zeros(ct.cubeDim)};
+    % cube{1} = logical mask with 1 inside lung
     modulation.cube(1) = {zeros(ct.cubeDim)};
     modulation.cubeHU = {ones(ct.cubeDim).*-1024};
     % in the future: set additional filter for modulating material atm its just "lung"
@@ -167,8 +170,10 @@ if isfield(pln.propOpt, 'lungModulation') && pln.propOpt.lungModulation
             %                 VlungGrid = [cst{innerloop,4}];
             %                 VlungGrid = unique(vertcat(VlungGrid{:}));
         end
-        assignin('base', 'modulation', modulation)
+%         assignin('base', 'modulation', modulation)
     end
+    modulation.cube{1}(modulation.cube{2}>0) = 1;
+    assignin('base', 'modulation', modulation)
 
 
 %     filterkernel_std = ones(3,3,3);
@@ -182,7 +187,10 @@ if isfield(pln.propOpt, 'lungModulation') && pln.propOpt.lungModulation
 %     modulation.cube{1}(modulation.cube{1}<0) = 0;
 %     modulation.cube{1}(modulation.cube{1}>1) = 1;
 % %     temporary mask with 1 inside lung
-    modulation.cube{1}(modulation.cube{2}>0) = 1;
+%     modulation.cube{1}(modulation.cube{2}>0) = 1;
+% %  additional filter for HU range
+%     modulation.cube{1}(modulation.cubeHU{1}<-900 & modulation.cubeHU{1}>-100) = 0)
+
     figure,imshow(modulation.cube{2}(:,:,round(modulation.cubeDim(3)/2)))
 end
 
