@@ -505,6 +505,9 @@ for i = 1:length(pln.propStf.gantryAngles)
     if strcmp(pln.radiationMode, 'protons') || strcmp(pln.radiationMode, 'carbon')
         for j = 1:stf(i).numOfRays
             for k = 1:numel(stf(i).ray(j).energy)
+%                 stf(i).ray(j).rangeShifter(k).ID = 1;
+%                 stf(i).ray(j).rangeShifter(k).eqThickness = 20;
+%                 stf(i).ray(j).rangeShifter(k).sourceRashiDistance = 7884-30; %(7884-rashi_skin_Distance);
                 stf(i).ray(j).rangeShifter(k).ID = 0;
                 stf(i).ray(j).rangeShifter(k).eqThickness = 0;
                 stf(i).ray(j).rangeShifter(k).sourceRashiDistance = 0;

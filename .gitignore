@@ -4,3 +4,5 @@ basedata/protons_MIT_P_doubleGauss_10k_Points.mat
 basedata/protons_MIT_P_doubleGauss_woOffset.mat
 basedata/protons_MIT_P_doubleGauss_wOffset.mat
 basedata/protons_MIT_P_singleGauss.mat
+dicom/hlutLibrary/TOPAS-TOPAS-ConvolutionKernel-TOPAS_protons.hlut
+dicom/hlutLibrary
