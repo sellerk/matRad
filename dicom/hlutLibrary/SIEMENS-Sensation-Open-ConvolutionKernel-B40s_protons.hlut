@@ -1,0 +1,15 @@
+# matRad default HU lookup table
+# 
+# First column:    Hounsfield values (typically -1000...+3000)
+# Second column:   Relative electron densities(photons) or stopping power (particles)
+-1025    0.0001
+-1000    0.001
+-200    0.800
+-98    0.940
+-29    0.995
+0    1
+79    1.075
+183    1.11
+1374    1.70
+1974    1.778
+3096    2.077

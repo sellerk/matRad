@@ -1,0 +1,13 @@
+
+Topas is exiting due to a serious error triggered by:
+Instantiate for parameter: Ge/Patient/MaterialTagNumbers
+Parameter name: iv:Ge/Patient/MaterialTagNumbers
+has unsupported value: 2 2.536837e-01 1.008544e+00
+Integer vector parameters may have values of the following forms (or one of these plus # comment)
+   integer * name_of_integer_vector_parameter
+   number_of_values value1 value2 ... valueN
+   number_of_values value1 value2 ... valueN + name_of_integer_or_integer_vector_parameter
+   number_of_values value1 value2 ... valueN - name_of_integer_or_integer_vector_parameter
+   number_of_values value1 value2 ... valueN * name_of_integer_or_integer_vector_parameter
+   name_of_integer_vector_parameter
+   name_of_integer_parameter * name_of_integer_vector_parameter

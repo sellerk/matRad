@@ -760,16 +760,10 @@ classdef MatRad_TopasConfig < handle
                     % MaW: direct conversion of the density cube (ct.cube) to water of different densities
                     % same as RSP but without the new calculation from
                     % ct.cubeHU
-                    rspHlut = matRad_loadHLUT(ct,pln);
-                    min_HU = rspHlut(1,1);
-                    max_HU = rspHlut(end,1);
+                    
+                    huCube = (permute(ct.cube{1},permutation)); %  X,Y,Z ordering
 
-                    huCube = int32(permute(ct.cubeHU{1},permutation)); %  X,Y,Z ordering
-                    huCube(huCube < min_HU) = min_HU;
-                    huCube(huCube > max_HU) = max_HU;
-
-                    unique_hu = unique(huCube(:));
-                    unique_rsp = matRad_interp1(rspHlut(:,1),rspHlut(:,2),double(unique_hu));
+                    unique_hu(:,2) = unique(huCube(:));
 
                     fbase = fopen(['materials/' medium '.txt'],'r');
                     while ~feof(fbase)
@@ -781,7 +775,7 @@ classdef MatRad_TopasConfig < handle
                     for ix=1:length(unique_hu)
                         unique_materials{ix} = strrep(['Material_HU_',num2str(unique_hu(ix))],'-','m');
                         fprintf(fID,'s:Ma/%s/BaseMaterial = "%s"\n',unique_materials{ix},medium);
-                        fprintf(fID,'d:Ma/%s/Density = %f g/cm3\n',unique_materials{ix},unique_rsp(ix));
+                        fprintf(fID,'d:Ma/%s/Density = %f g/cm3\n',unique_materials{ix},unique_hu(ix));
                     end
 
                     fprintf(fID,'s:Ge/Patient/Parent="World"\n');
@@ -809,6 +803,7 @@ classdef MatRad_TopasConfig < handle
                     fwrite(fID,huCube,'short');
                     fclose(fID);
                     cube = huCube;                   
+                
                 case 'HUToWaterSchneider'
                     huCube = int32(permute(ct.cubeHU{1},permutation));
                     rspHlut = matRad_loadHLUT(ct,pln);

@@ -763,7 +763,8 @@ classdef MatRad_TopasConfig < handle
                     
                     huCube = (permute(ct.cube{1},permutation)); %  X,Y,Z ordering
 
-                    unique_hu = unique(huCube(:));
+                    unique_hu(:,2) = unique(huCube(:));
+                    unique_hu(:,1) = 1:size(unique_hu,2);
 
                     fbase = fopen(['materials/' medium '.txt'],'r');
                     while ~feof(fbase)
@@ -772,10 +773,10 @@ classdef MatRad_TopasConfig < handle
                     end
                     fclose(fbase);
                     unique_materials = [];
-                    for ix=1:length(unique_hu)
+                    for ix=1:size(unique_hu,2)
                         unique_materials{ix} = strrep(['Material_HU_',num2str(unique_hu(ix))],'-','m');
                         fprintf(fID,'s:Ma/%s/BaseMaterial = "%s"\n',unique_materials{ix},medium);
-                        fprintf(fID,'d:Ma/%s/Density = %f g/cm3\n',unique_materials{ix},unique_hu(ix));
+                        fprintf(fID,'d:Ma/%s/Density = %f g/cm3\n',unique_materials{ix},unique_hu(ix,2));
                     end
 
                     fprintf(fID,'s:Ge/Patient/Parent="World"\n');
@@ -790,10 +791,10 @@ classdef MatRad_TopasConfig < handle
                     fprintf(fID,'d:Ge/Patient/VoxelSizeY       = %.3f mm\n',ct.resolution.y);
                     fprintf(fID,'dv:Ge/Patient/VoxelSizeZ       = 1 %.3f mm\n',ct.resolution.z);
                     fprintf(fID,'s:Ge/Patient/DataType  = "SHORT"\n');
-                    fprintf(fID,'iv:Ge/Patient/MaterialTagNumbers = %d ',length(unique_hu));
-                    fprintf(fID,num2str(unique_hu','%d '));
+                    fprintf(fID,'iv:Ge/Patient/MaterialTagNumbers = %d ',size(unique_hu,2));
+                    fprintf(fID,num2str(unique_hu(:,1)','%d '));
                     fprintf(fID,'\n');
-                    fprintf(fID,'sv:Ge/Patient/MaterialNames = %d ',length(unique_hu));
+                    fprintf(fID,'sv:Ge/Patient/MaterialNames = %d ',size(unique_hu,2));
                     fprintf(fID,'"%s"',strjoin(unique_materials,'" "'));
                     fprintf(fID,'\n');
                     fclose(fID);    
