@@ -4,7 +4,7 @@ function [gammaCube,gammaPassRate,hfig] = matRad_compareDose(cube1, cube2, ct, c
 % call
 %   [gammaCube,gammaPassRate,hfig] = matRad_compareDose(cube1, cube2, ct, cst)
 %   [gammaCube,gammaPassRate,hfig] = matRad_compareDose(cube1, cube2, ct, cst,enable , contours, pln, criteria, n,localglobal)
-%
+%   [gammaCube,gammaPassRate] = matRad_compareDose(cube1, cube2, ct, cst, [1, 1, 0] , 'off', pln, [1, 1], 1, 'global');
 % input
 %   cube1:         dose cube 1 as an M x N x O array
 %   cube2:         dose cube 2 as an M x N x O array
