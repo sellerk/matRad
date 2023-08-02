@@ -9,7 +9,7 @@ b:Ts/ShowCPUTime = "True"
 i:Tf/Verbosity = 0
 i:Ts/MaxInterruptedHistories = 1000
 Ts/NumberOfThreads = 0
-i:Ts/ShowHistoryCountAtInterval = 10000
+i:Ts/ShowHistoryCountAtInterval = 100000
 
 s:Sim/DoseScorerOutputType = "binary"
 sv:Sim/DoseScorerReport = 1 "Sum"
@@ -23,7 +23,7 @@ s:Sc/Patient/Tally_DoseToMedium/Quantity = "DoseToMedium"
 s:Sc/Patient/Tally_DoseToMedium/OutputType = Sim/DoseScorerOutputType # "csv" "binary" "Root" "Xml" or "DICOM"
 s:Sc/Patient/Tally_DoseToMedium/Component = "Patient"
 sv:Sc/Patient/Tally_DoseToMedium/Report = Sim/DoseScorerReport
-s:Sc/Patient/Tally_DoseToMedium/IfOutputFileAlreadyExists = "Increment" # "Exit" "Overwrite" or "Increment"
+s:Sc/Patient/Tally_DoseToMedium/IfOutputFileAlreadyExists = "Overwrite" # "Exit" "Overwrite" or "Increment"
 b:Sc/Patient/Tally_DoseToMedium/OutputToConsole = "False"
 s:Sc/Patient/Tally_DoseToMedium/OutputFile = Sim/ScoreLabel + "_physicalDose"
 
