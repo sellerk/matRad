@@ -1,4 +1,4 @@
-classdef MatRad_TopasConfig < handle
+classdef MatRad_TopasConfigCluster < handle
 % MatRad_TopasConfig class definition
 % 
 %
@@ -102,7 +102,7 @@ classdef MatRad_TopasConfig < handle
     end
     
     methods
-        function obj = MatRad_TopasConfig()
+        function obj = MatRad_TopasConfigCluster()
             %MatRad_MCsquareConfig Construct configuration Class for TOPAS
             %   Default execution paths are set here
             
@@ -168,7 +168,8 @@ classdef MatRad_TopasConfig < handle
         function writeRunHeader(obj,fID,fieldIx,runIx)
            
            fprintf(fID,'s:Sim/PlanLabel = "%s"\n',obj.label);
-           fprintf(fID,'s:Sim/ScoreLabel = "score_%s_field%d_run%d"\n',obj.label,fieldIx,runIx);           
+           fprintf(fID,'s:Sim/ScoreLabel = "score_%s_field%d_run%d_loop%s"\n',obj.label,fieldIx,runIx, obj.Loopcounter); %MaW           
+%            fprintf(fID,'s:Sim/ScoreLabel = "score_%s_field%d_run%d"\n',obj.label,fieldIx,runIx); %MaW
            fprintf(fID,'\n');
            
            logicalString = {'"False"', '"True"'};
@@ -464,7 +465,8 @@ classdef MatRad_TopasConfig < handle
                 [~,ixSorted] = sort([dataTOPAS(:).energy]);
                 dataTOPAS = dataTOPAS(ixSorted);
                 %write TOPAS data base file
-                fieldSetupFileName = sprintf('beamSetup_%s_field%d.txt',obj.label,beamIx);
+                fieldSetupFileName = sprintf('beamSetup_%s_field%d_loop%s.txt',obj.label,beamIx, obj.Loopcounter); %MaW
+%                 fieldSetupFileName = sprintf('beamSetup_%s_field%d.txt',obj.label,beamIx); %MaW
                 fileID = fopen(fullfile(obj.workingDir,fieldSetupFileName),'w');
                 obj.writeFieldHeader(fileID,beamIx);                
                 
@@ -641,7 +643,8 @@ classdef MatRad_TopasConfig < handle
                 fclose(fileID);
                 %write run scripts for TOPAS
                 for runIx = 1:obj.numOfRuns
-                    runFileName = sprintf('%s_field%d_run%d.txt',obj.label,beamIx,runIx);
+                    runFileName = sprintf('%s_field%d_run%d_loop%s.txt',obj.label,beamIx,runIx, obj.Loopcounter); %MaW
+%                     runFileName = sprintf('%s_field%d_run%d.txt',obj.label,beamIx,runIx); %MaW
                     fileID = fopen(fullfile(obj.workingDir,runFileName),'w');
                     obj.writeRunHeader(fileID,beamIx,runIx);
                     fprintf(fileID,['i:Ts/Seed = ',num2str(runIx),'\n']);
@@ -768,7 +771,6 @@ classdef MatRad_TopasConfig < handle
                     huCube = reshape(interp1(unique_hu(:,2), unique_hu(:,1), tempCube), ct.cubeDim);
 
                     huCube = int32(permute(huCube,permutation)); %  X,Y,Z ordering
-%                     huCube = int32(permute(tempCube,permutation)); %  X,Y,Z ordering
                     
 
                     fbase = fopen(['materials/' medium '.txt'],'r');
