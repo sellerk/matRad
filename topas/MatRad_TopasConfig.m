@@ -316,7 +316,7 @@ classdef MatRad_TopasConfig < handle
                 
                 %Selection of base data given the energies
                 if obj.useOrigBaseData
-                    [~,ixTmp,~] = intersect([ baseData.machine.data.energy], [stf.ray.energy]);
+                    [~,ixTmp,~] = intersect([ baseData.machine.data.energy], [stf(beamIx).ray.energy]);
                     for i = 1:length(ixTmp)
                         selectedData(i) =  baseData.machine.data(ixTmp(i));
                     end
