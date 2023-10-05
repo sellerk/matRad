@@ -69,6 +69,10 @@ if isfield(pln.propOpt, 'lungModulation') && pln.propOpt.lungModulation
 %         lungDepthVdoseGrid(currentScen) = matRad_interpRadDepth...
 %             (modulation,currentScen,VctGrid,VdoseGrid,dij.doseGrid.x,dij.doseGrid.y,dij.doseGrid.z,modulationDepthVctGrid);
     end
+    if ~isfield(pln.propOpt, 'ModulationPower')
+        pln.propOpt.ModulationPower = 250;
+        matRad_cfg.dispInfo('matRad: no modulation power specified using default value of Pmod = 250\mum ...');
+    end
 %   prepare basedata for the convolution => 
 %   precomputation of prolonged basedata needed for
 %   convolution in calcParticleDoseBixel
