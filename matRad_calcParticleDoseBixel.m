@@ -1,4 +1,4 @@
-function dose = matRad_calcParticleDoseBixel(radDepths, radialDist_sq, sigmaIni_sq, baseData, lungModulation, currmodulationDepth)
+function dose = matRad_calcParticleDoseBixel(radDepths, radialDist_sq, sigmaIni_sq, baseData, lungModulation, Pmod, currmodulationDepth)
 % matRad visualization of two-dimensional dose distributions 
 % on ct including segmentation
 % 
@@ -52,7 +52,7 @@ if exist('lungModulation', 'var') && lungModulation
         else
         % Berechnung der modulierten Basisdaten
         Zmod(innerloop) = matRad_convBaseData_voxelvise(baseData,...
-            radDepths(innerloop), currmodulationDepth(innerloop), 800);
+            radDepths(innerloop), currmodulationDepth(innerloop), Pmod);
         %%
         end
     end

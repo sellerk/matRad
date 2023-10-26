@@ -153,6 +153,8 @@ if isfield(pln.propOpt, 'lungModulation') && pln.propOpt.lungModulation
     % modulation cube with properties of ct      
     modulation = ct;
     modulation.numOfCtScen = 2;
+    % cube{1} = logical Mask of all Voxels inside Lung / or rather
+    % modulating voxels (see HU trehshold later)
     % cube{2} = all voxels inside lung with its final SPR assigned all
     % other voxels = 0
     modulation.cube(2) = {zeros(ct.cubeDim)};
@@ -172,6 +174,9 @@ if isfield(pln.propOpt, 'lungModulation') && pln.propOpt.lungModulation
         end
 %         assignin('base', 'modulation', modulation)
     end
+    % apply HU threshold 
+    HU_schwelle = [-900 -100];
+    modulation.cube{2}(modulation.cubeHU{1}<HU_schwelle(1) | modulation.cubeHU{1}>HU_schwelle(2)) = 0;
     modulation.cube{1}(modulation.cube{2}>0) = 1;
     assignin('base', 'modulation', modulation)
 
