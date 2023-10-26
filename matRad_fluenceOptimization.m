@@ -1,4 +1,4 @@
-function [resultGUI,optimizer] = matRad_fluenceOptimization(dij,cst,pln,wInit)
+function [resultGUI,optimizer] = matRad_fluenceOptimization(dij,cst,pln)
 % matRad inverse planning wrapper function
 % 
 % call
@@ -8,7 +8,6 @@ function [resultGUI,optimizer] = matRad_fluenceOptimization(dij,cst,pln,wInit)
 %   dij:        matRad dij struct
 %   cst:        matRad cst struct
 %   pln:        matRad pln struct
-%   wInit:      initial Guess (e.g. resultGUI.w)
 %
 % output
 %   resultGUI:  struct containing optimized fluence vector, dose, and (for
@@ -116,10 +115,8 @@ if  strcmp(pln.propOpt.bioOptimization,'const_RBExD') && strcmp(pln.radiationMod
     if ~isfield(dij,'RBE')
         dij.RBE = 1.1;
     end
-    if ~exist("wInit")
-        bixelWeight =  (doseTarget)/(dij.RBE * mean(dij.physicalDose{1}(V,:)*wOnes)); 
-        wInit       = wOnes * bixelWeight;
-    end
+    bixelWeight =  (doseTarget)/(dij.RBE * mean(dij.physicalDose{1}(V,:)*wOnes)); 
+    wInit       = wOnes * bixelWeight;
         
 elseif (strcmp(pln.propOpt.bioOptimization,'LEMIV_effect') || strcmp(pln.propOpt.bioOptimization,'LEMIV_RBExD')) ... 
                                 && strcmp(pln.radiationMode,'carbon')
@@ -170,10 +167,8 @@ elseif (strcmp(pln.propOpt.bioOptimization,'LEMIV_effect') || strcmp(pln.propOpt
     
 else 
     bixelWeight =  (doseTarget)/(mean(dij.physicalDose{1}(V,:)*wOnes)); 
-    if ~exist("wInit")
-        wInit       = wOnes * bixelWeight;
-        pln.propOpt.bioOptimization = 'none';
-    end
+    wInit       = wOnes * bixelWeight;
+    pln.propOpt.bioOptimization = 'none';
 end
 
 % set optimization options
