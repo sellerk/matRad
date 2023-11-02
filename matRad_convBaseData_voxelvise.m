@@ -72,7 +72,7 @@ Zmod_vox = matRad_interp1(baseData.depths, Zmod, radiologicalDepth);
 
 
 
-% %% uncomment to see the basedata convolution
+% % %% uncomment to see the basedata convolution
 % if ~isempty(varargin)
 %     figure
 %     axes1 = axes('Parent',gcf,'YColor',[0.2 0.2 0.2],'XColor',[0.2 0.2 0.2],...
@@ -87,7 +87,7 @@ Zmod_vox = matRad_interp1(baseData.depths, Zmod, radiologicalDepth);
 %     hold(axes1,'all');
 %     min_ref = min(baseData.depths);
 %     max_ref = max(baseData.depths);
-%     
+% 
 %     plot(baseData.depths, baseData.Z,'LineWidth', 3, 'Color', 'black')
 %     plot(baseData.depths, Zmod,'LineWidth', 3, 'Color', 'blue');
 %     updateAxesProperties(gca, 'LineWidth', 3, 'xlim', [min_ref max_ref], 'FontSize', 20)
@@ -96,8 +96,8 @@ Zmod_vox = matRad_interp1(baseData.depths, Zmod, radiologicalDepth);
 %     xlabel('Range in water /mm')
 %     ylabel('MeV cm^2/g per primary')
 %     legend({'BaseData', 'Modulated BaseData'}, 'location', 'NorthWest');
-%     
-%     
+% 
+% 
 %     axes1 = axes('Parent',gcf,'YColor',[0.2 0.2 0.2],'XColor',[0.2 0.2 0.2],...
 %         'TickDir','in',...
 %         'TickLength',[0.01 0.01],...
@@ -112,7 +112,7 @@ Zmod_vox = matRad_interp1(baseData.depths, Zmod, radiologicalDepth);
 %     xlabel('range in water /mm')
 %     ylabel('frequency')
 %     legend({'modulationfunction'}, 'Location', 'NorthWest');
-%     
+% 
 %     % Create textbox
 %     annotation(gcf,'textbox',...
 %         [0.162823361823361 0.183521492945849 0.132763532763533 0.105360443622921],...
@@ -121,13 +121,13 @@ Zmod_vox = matRad_interp1(baseData.depths, Zmod, radiologicalDepth);
 %         'FontSize', 15, ...
 %         'FontWeight', 'normal',...
 %         'Interpreter', 'tex');
-%     
+% 
 %     % %     figure, hold on
 %     % %     plot(baseData.depths, baseData.Z, '-')
 %     % %     plot(baseData.depths, conv_res, '--')
 %     % %     line([baseData.peakPos baseData.peakPos], [0 50], 'Color', 'black')
 %     % %     figure, hold on
 %     % %     plot(normvert(:,1),normvert(:,2))
-% end
+% % end
 
 end
