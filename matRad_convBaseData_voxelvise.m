@@ -62,7 +62,8 @@ else
     conv_res = conv_res(ceil(size(baseData.depths_adapted,1)/2):end);
     % introduce a scaling in a way that the area under of modulated and
     % unmodulated bragg curves are the same => Dosiserhaltung!
-    scaling_conv =  sum(conv_res) / sum(baseData.Z);
+    % scaling_conv =  sum(conv_res) / sum(baseData.Z.profileORG); %temp MaW
+    scaling_conv =  sum(conv_res) / sum(baseData.Z); %temp MaW
     Zmod = conv_res./scaling_conv;
 end
 

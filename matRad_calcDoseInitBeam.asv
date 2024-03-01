@@ -79,10 +79,8 @@ if isfield(pln.propOpt, 'lungModulation') && pln.propOpt.lungModulation
 %   currently all energies are prolonged => consider prolonging only used
 %   energies
 % min_energyIx = min(round2(stf(i).ray(j).energy,4)) == round2([machine.data.energy],4);
-min_energyIx = find(min(round2(stf.ray.energy,4)) == round2([machine.data.energy],4));
-% min_energyIx = 1;
-% max_energyIx = max(round2(stf(i).ray(j).energy,4)) == round2([machine.data.energy],4);
-max_energyIx  = find(max(round2(stf.ray.energy,4)) == round2([machine.data.energy],4));
+min_energyIx = 1;
+max_energyIx = max(round2(stf(i).ray(j).energy,4)) == round2([machine.data.energy],4);
 % max_energyIx = 290;
 % max_energyIx = stf.ray.energy; % temp maw
 min_energyIx = max_energyIx;

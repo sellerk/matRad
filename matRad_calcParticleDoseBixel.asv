@@ -87,7 +87,7 @@ if exist('lungModulation', 'var') && lungModulation && ~isfield(baseData,'sigma'
 
     dose = conversionFactor .* Zmod .*L;
     
-elseif ~isfield(baseData,'sigma') && (~exist('lungModulation', 'var') || ~lungModulation )
+elseif ~isfield(baseData,'sigma') && ~exist('lungModulation', 'var') || ~lungModulation 
     
     % interpolate depth dose, sigmas, and weights    
     X = matRad_interp1(depths,[conversionFactor*baseData.Z baseData.sigma1 baseData.weight baseData.sigma2],radDepths);
@@ -130,8 +130,7 @@ elseif exist('lungModulation', 'var') && lungModulation && isfield(baseData,'sig
     
     % calculate dose
     % dose = baseData.LatCutOff.CompFac * exp( -radialDist_sq ./ (2*sigmaSq)) .* X(:,1) ./(2*pi*sigmaSq);
-    % dose = conversionFactor .* Zmod .*L;
-    dose = conversionFactor.*baseData.LatCutOff.CompFac * exp( -radialDist_sq ./ (2*sigmaSq)) .* Zmod ./(2*pi*sigmaSq);
+    dose = conversionFactor .* Zmod .*L;
 else
     
     % interpolate depth dose and sigma
@@ -149,4 +148,3 @@ else
 if any(isnan(dose)) || any(dose<0)
    error('Error in particle dose calculation.');
 end 
-

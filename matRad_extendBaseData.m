@@ -26,7 +26,9 @@ addlength = size(baseData.depths,1);
 
 adddepths = flipud((baseData.depths(2:addlength)*-1));
 depths = [adddepths; baseData.depths];
-addZ = (ones(addlength-1,1).*baseData.Z(1));
+% addZ = (ones(addlength-1,1).*baseData.Z.profileORG(1)); % temp adapt 
+addZ = (ones(addlength-1,1).*baseData.Z(1)); 
+% Z = [addZ;baseData.Z.profileORG];% temp adapt 
 Z = [addZ;baseData.Z];
 
 Z_adapted = Z;
