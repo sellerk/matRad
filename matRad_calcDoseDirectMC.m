@@ -43,7 +43,11 @@ matRad_cfg =  MatRad_Config.instance();
 calcDoseDirect = true;
 
 if nargin < 6 || ~exist('nHistories')
-  nHistories = matRad_cfg.propMC.direct_defaultHistories;
+    try 
+        nHistories = pln.propMC.config.numHistories;
+    catch
+        nHistories = matRad_cfg.propMC.direct_defaultHistories;
+    end
   matRad_cfg.dispInfo('Using default number of Histories: %d\n',nHistories);
 end
 
