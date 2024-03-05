@@ -45,7 +45,7 @@ if exist('lungModulation', 'var') && lungModulation && ~isfield(baseData,'sigma'
     Zmod = zeros(length(radDepths),1);
     % no lung penetrated => calculation as in matRad original
     Zmod((currmodulationDepth ==0)) = matRad_interp1(baseData.depths, baseData.Z, radDepths((currmodulationDepth ==0)));
-    parfor innerloop = 1:length(radDepths)
+    for innerloop = 1:length(radDepths)
         % no modulation depth => skip 
         if currmodulationDepth(innerloop) == 0
             continue
