@@ -93,15 +93,15 @@ for beamcounter = 1 : size(stf,2)
     [PBP_help(beamcounter).Energies, ia]= unique(PBP_data{1,beamcounter}(:,4));
     PBP_help(beamcounter).foci = PBP_data{1,beamcounter}(ia,5);
     for IESloop = 1 : numel(PBP_help(beamcounter).Energies)
-        PBP.IES(IESloop).energy =  PBP_help(beamcounter).Energies(IESloop);
-        PBP.IES(IESloop).focus =   PBP_help(beamcounter).foci(IESloop);
-        PBP.IES(IESloop).data{:,1} = PBP_data{1,beamcounter}((PBP_data{1,beamcounter}(:,4) ==  PBP_help(beamcounter).Energies(IESloop)),1); % X-Position
-        PBP.IES(IESloop).data{:,2} = PBP_data{1,beamcounter}((PBP_data{1,beamcounter}(:,4) ==  PBP_help(beamcounter).Energies(IESloop)),2); % Y-Position
-        PBP.IES(IESloop).data{:,3} = PBP_data{1,beamcounter}((PBP_data{1,beamcounter}(:,4) ==  PBP_help(beamcounter).Energies(IESloop)),3); % beamweight
+        PBP(beamcounter).IES(IESloop).energy =  PBP_help(beamcounter).Energies(IESloop);
+        PBP(beamcounter).IES(IESloop).focus =   PBP_help(beamcounter).foci(IESloop);
+        PBP(beamcounter).IES(IESloop).data{:,1} = PBP_data{1,beamcounter}((PBP_data{1,beamcounter}(:,4) ==  PBP_help(beamcounter).Energies(IESloop)),1); % X-Position
+        PBP(beamcounter).IES(IESloop).data{:,2} = PBP_data{1,beamcounter}((PBP_data{1,beamcounter}(:,4) ==  PBP_help(beamcounter).Energies(IESloop)),2); % Y-Position
+        PBP(beamcounter).IES(IESloop).data{:,3} = PBP_data{1,beamcounter}((PBP_data{1,beamcounter}(:,4) ==  PBP_help(beamcounter).Energies(IESloop)),3); % beamweight
         PBP_help(beamcounter).PBP_x{IESloop}(:,1) = PBP_data{1,beamcounter}((PBP_data{1,beamcounter}(:,4) ==  PBP_help(beamcounter).Energies(IESloop)),1);
         PBP_help(beamcounter).PBP_y{IESloop}(:,1) = PBP_data{1,beamcounter}((PBP_data{1,beamcounter}(:,4) ==  PBP_help(beamcounter).Energies(IESloop)),2);
         PBP_help(beamcounter).PBP_partcount{IESloop}(:,1) = PBP_data{1,beamcounter}((PBP_data{1,beamcounter}(:,4) ==  PBP_help(beamcounter).Energies(IESloop)),3);
-        PBP.IES(IESloop).data =  cell2mat(PBP.IES(IESloop).data);
+        PBP(beamcounter).IES(IESloop).data =  cell2mat(PBP(beamcounter).IES(IESloop).data);
     end
     PBP_help(beamcounter).NumIES = IESloop;
 
@@ -204,7 +204,8 @@ for beamcounter = 1 : size(stf,2)
     else
         return
     end
+    % PBP(beamcounter).Allpoints = cell2mat(PBP_data{1,beamcounter});
 end
-PBP(beamcounter).Allpoints = cell2mat(PBP_data);
+
 end
 
