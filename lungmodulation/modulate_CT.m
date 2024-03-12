@@ -7,7 +7,12 @@ load pMod_tables_250_450_800.mat
 
 poisson_dens(2,:) =  1:size(poisson_dens,2);
 poisson_dens = fliplr(poisson_dens');
+
+%% hier muss die richtige tabelle ausgewählt werden
+
 interp_poission_pMod = interp_poission_pMod250;
+interp_poission_pMod = interp_poission_pMod450;
+interp_poission_pMod = interp_poission_pMod800;
 % replace minimum value from 0 density to 1e-6 to make sure TOPAS
 % simulation ist run properly! 
 % is taken care of in precompute_Densfnc just make sure again!
@@ -100,5 +105,5 @@ modulation.metrics.meandens = mean(modulation.metrics.meandata);
 modulation.metrics.origCTdens = mean(ct.cube{1}(modulation.cube{1} == 1));
 modulation.metrics.num_repetitions = num_repetitions;
 modulation.metrics.poission = interp_poission_pMod;
-modulation.metrics.Pmod = 250;
+% modulation.metrics.Pmod = 250;
 

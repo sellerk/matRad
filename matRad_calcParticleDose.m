@@ -36,7 +36,7 @@ function dij = matRad_calcParticleDose(ct,stf,pln,cst,calcDoseDirect)
 matRad_cfg =  MatRad_Config.instance();
 
 % init dose calc
-matRad_calcDoseInit;
+matRad_calcDoseInit
 
 % initialize waitbar
 figureWait = waitbar(0,'calculate dose influence matrix for particles...');
