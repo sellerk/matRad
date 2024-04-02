@@ -87,6 +87,7 @@ columnwise_CTcubeHU(:,3) = interp1(poisson_dens(:,2),poisson_dens(:,1),columnwis
 
 %% creating random numbers, masking, reshape 
 % % add original Density values outside the lung
+modulation.metrics.origCTdens = mean(ct.cube{1}(modulation.cube{1} == 1));
 
 for i = 1: num_repetitions
     % disp(i)
@@ -97,12 +98,15 @@ for i = 1: num_repetitions
     modulation.modCube{i,1}(modulation.cube{1} == 0) = ct.cube{1}(modulation.cube{1} == 0);
     % compute some metrics to check wether the calculations are meaninful
     modulation.metrics.meandata(:,i) = mean(modulation.modCube{i,1}(modulation.cube{1} == 1));
+    % add a correction factor to compensate for minor differences in
+    % density after the modulation
+    densCorrScaling = modulation.metrics.origCTdens / modulation.metrics.meandata(:,i);
+    modulation.modCube{i,1}(modulation.cube{1} == 1) = modulation.modCube{i,1}(modulation.cube{1} == 1).*densCorrScaling;
+    modulation.metrics.meandata(:,i) = mean(modulation.modCube{i,1}(modulation.cube{1} == 1));
 end
 
 
 modulation.metrics.meandens = mean(modulation.metrics.meandata);
-% modulation.metrics.rand_numbers = random_numbers;
-modulation.metrics.origCTdens = mean(ct.cube{1}(modulation.cube{1} == 1));
 modulation.metrics.num_repetitions = num_repetitions;
 modulation.metrics.poission = interp_poission_pMod;
 % modulation.metrics.Pmod = 250;
