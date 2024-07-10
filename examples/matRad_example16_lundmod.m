@@ -1,12 +1,13 @@
 clear, clc
 
 %% minimal beispiel
-load \\david.lse.thm.de\Temp\jessica\phantom\PL666931029189007_60_depth.mat
+load 'C:\Users\Matth\OneDrive\Matlab\_matRad\lungmodulation\PL666931029189007_60_depth.mat'
 
 
 % machine
 pln.radiationMode   = 'protons';     % either photons / protons / carbon
-pln.machine         = 'Generic';
+% pln.machine         = 'MIT_p_doubleGauss';
+pln.machine         = 'generic';
 % beam geometry settings
 pln.numOfFractions  = 1;
 pln.propStf.bixelWidth      = 5; % [mm] / also corresponds to lateral spot spacing for particles
@@ -40,7 +41,7 @@ resultGUI = matRad_fluenceOptimization(dij,cst,pln);
 pln.propOpt.lungModulation = true;
 pln.propOpt.ModulationPower = 800;
 resultGUI_lungmod = matRad_calcDoseDirect(ct,stf,pln,cst,resultGUI.w);
-resultGUI.physicalDose_conv800 = resultGUI_lungmod .physicalDose;
+resultGUI.physicalDose_conv800 = resultGUI_lungmod.physicalDose;
 
 matRad_compareDose(resultGUI.physicalDose,resultGUI_lungmod.physicalDose,ct,cst,[1 1 0]);
 
@@ -55,7 +56,7 @@ if ~exist('modulation', "var")
 else
     pln.propDoseCalc.useGivenEqDensityCube = true;
     ct = matRad_calcWaterEqD(ct, pln);
-    modulate_CT
+    modulation = matrad_modulateCT(ct, modulation, 100, pln.propOpt.ModulationPower);
 end
 
 tempstore_ct = ct;
